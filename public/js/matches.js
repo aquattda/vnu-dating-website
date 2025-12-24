@@ -230,16 +230,27 @@ async function connectWithUser(targetUserId, purpose) {
     }
     
     try {
+        const requestBody = { matchedUserId: targetUserId, purpose };
+        console.log('🚀 Sending connection request:', {
+            url: `${API_URL}/connection`,
+            body: requestBody,
+            targetUserId,
+            purpose,
+            token: token ? 'EXISTS' : 'MISSING'
+        });
+        
         const response = await fetch(`${API_URL}/connection`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ matchedUserId: targetUserId, purpose })
+            body: JSON.stringify(requestBody)
         });
         
+        console.log('📥 Response status:', response.status);
         const data = await response.json();
+        console.log('📥 Response data:', data);
         
         if (data.success) {
             // Hiển thị thông tin liên hệ ngay trên card
@@ -266,11 +277,13 @@ async function connectWithUser(targetUserId, purpose) {
                     'Không thể kết nối'
                 );
             } else {
+                console.error('❌ Connection failed:', data);
                 customError(data.error || 'Không thể kết nối', 'Lỗi');
             }
         }
     } catch (error) {
-        customError('Lỗi kết nối server', 'Lỗi mạng');
+        console.error('❌ Network error:', error);
+        customError('Lỗi kết nối server: ' + error.message, 'Lỗi mạng');
     }
 }
 
