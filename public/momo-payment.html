@@ -312,6 +312,8 @@
             const params = new URLSearchParams(window.location.search);
             orderId = params.get('orderId');
             amount = parseInt(params.get('amount'));
+            window.packageId = parseInt(params.get('packageId'));
+            window.transactionId = params.get('transactionId');
 
             if (!orderId || !amount) {
                 alert('Thông tin thanh toán không hợp lệ');
@@ -348,14 +350,18 @@
             // Simulate payment processing (2 seconds)
             setTimeout(async () => {
                 try {
+                    const token = localStorage.getItem('token');
+                    
                     // Call backend to confirm payment
                     const response = await fetch(`${API_URL}/premium/payment-callback`, {
                         method: 'POST',
                         headers: {
-                            'Content-Type': 'application/json'
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
                         },
                         body: JSON.stringify({
-                            orderId: orderId,
+                            transactionId: window.transactionId,
+                            packageId: window.packageId,
                             status: 'success'
                         })
                     });

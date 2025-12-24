@@ -811,48 +811,106 @@ app.post('/api/premium/create-payment', authenticateToken, async (req, res) => {
             return res.status(400).json({ error: 'Gói không hợp lệ' });
         }
 
-        // Create transaction
+        // Create PENDING transaction (will be completed in MoMo page)
         const transactionId = 'MOMO' + Date.now();
+        const orderId = 'ORDER_' + Date.now();
+        
         const newTransaction = new Transaction({
             transactionId,
             userId: req.user.id,
             packageName: selectedPackage.name,
             amount: selectedPackage.price,
-            status: 'success'
+            status: 'pending'  // Changed to pending
         });
 
         await newTransaction.save();
 
-        // Calculate expiry for monthly package
-        let expiresAt = null;
-        if (selectedPackage.type === 'monthly') {
-            expiresAt = new Date();
-            expiresAt.setDate(expiresAt.getDate() + 30);
-        }
-
-        // Add premium
-        const newPremium = new Premium({
-            userId: req.user.id,
-            packageName: selectedPackage.name,
-            matches: selectedPackage.matches,
-            remainingMatches: selectedPackage.matches,
-            price: selectedPackage.price,
-            expiresAt
-        });
-
-        await newPremium.save();
+        // Return payment URL for redirect
+        const paymentUrl = `/momo-payment.html?orderId=${orderId}&amount=${selectedPackage.price}&packageId=${packageId}&transactionId=${transactionId}`;
 
         res.json({
             success: true,
-            message: 'Thanh toán thành công!',
-            transactionId,
-            package: selectedPackage
+            orderId,
+            paymentUrl,
+            amount: selectedPackage.price,
+            transactionId
         });
     } catch (error) {
         console.error('Create payment error:', error);
         res.status(500).json({ error: 'Lỗi server' });
     }
 });
+
+// MoMo payment callback (complete payment)
+app.post('/api/premium/payment-callback', authenticateToken, async (req, res) => {
+    try {
+        const { transactionId, packageId, status } = req.body;
+
+        if (!transactionId || !packageId) {
+            return res.status(400).json({ error: 'transactionId and packageId are required' });
+        }
+
+        // Find transaction
+        const transaction = await Transaction.findOne({ transactionId });
+        if (!transaction) {
+            return res.status(404).json({ error: 'Transaction not found' });
+        }
+
+        if (transaction.status === 'success') {
+            return res.json({ success: true, message: 'Already processed' });
+        }
+
+        // Update transaction status
+        transaction.status = status === 'success' ? 'success' : 'failed';
+        await transaction.save();
+
+        if (status === 'success') {
+            // Create premium package
+            const packages = {
+                1: { name: '1 Lượt Match', matches: 1, price: 15000, type: 'one-time' },
+                2: { name: '3 Lượt Match', matches: 3, price: 39000, type: 'one-time' },
+                3: { name: '5 Lượt Match', matches: 5, price: 59000, type: 'one-time' },
+                4: { name: 'Monthly Premium', matches: 30, price: 99000, type: 'monthly' }
+            };
+
+            const selectedPackage = packages[packageId];
+            
+            // Calculate expiry for monthly package
+            let expiresAt = null;
+            if (selectedPackage.type === 'monthly') {
+                expiresAt = new Date();
+                expiresAt.setDate(expiresAt.getDate() + 30);
+            }
+
+            // Add premium
+            const newPremium = new Premium({
+                userId: req.user.id,  // Use authenticated user
+                packageName: selectedPackage.name,
+                matches: selectedPackage.matches,
+                remainingMatches: selectedPackage.matches,
+                price: selectedPackage.price,
+                expiresAt
+            });
+
+            await newPremium.save();
+
+            res.json({
+                success: true,
+                message: 'Thanh toán thành công!',
+                transactionId
+            });
+        } else {
+            res.json({
+                success: false,
+                message: 'Thanh toán thất bại'
+            });
+        }
+    } catch (error) {
+        console.error('Payment callback error:', error);
+        res.status(500).json({ error: 'Lỗi server' });
+    }
+});
+
 // Get user premium status
 app.get('/api/premium/status', authenticateToken, async (req, res) => {
     try {
