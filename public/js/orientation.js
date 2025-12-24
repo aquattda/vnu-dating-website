@@ -116,11 +116,13 @@ async function handleSubmit(e) {
     });
 
     const formData = new FormData(e.target);
-    const orientation = {};
+    const answers = {};
     
     formData.forEach((value, key) => {
-        orientation[key] = value;
+        answers[key] = value;
     });
+
+    console.log('Submitting orientation answers:', answers); // Debug log
 
     const token = localStorage.getItem('token');
 
@@ -131,12 +133,13 @@ async function handleSubmit(e) {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({ orientation })
+            body: JSON.stringify({ answers })
         });
 
         const data = await response.json();
+        console.log('Orientation response:', response.status, data); // Debug log
 
-        if (data.success) {
+        if (response.ok && data.success) {
             showMessage('Lưu thông tin thành công!');
             setTimeout(() => {
                 // Kiểm tra xem có phải từ profile quay lại không

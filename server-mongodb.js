@@ -190,18 +190,28 @@ app.get('/api/profile', authenticateToken, async (req, res) => {
 // Submit orientation questionnaire
 app.post('/api/orientation', authenticateToken, async (req, res) => {
     try {
-        const { answers } = req.body;
+        const { answers, orientation } = req.body;
+        const orientationData = answers || orientation;
+
+        if (!orientationData) {
+            return res.status(400).json({ error: 'Dữ liệu định hướng không hợp lệ' });
+        }
+
+        console.log('🎯 Saving orientation for user:', req.user.id);
+        console.log('Orientation data:', orientationData);
 
         // Update or create orientation
-        await Orientation.findOneAndUpdate(
+        const result = await Orientation.findOneAndUpdate(
             { userId: req.user.id },
-            { userId: req.user.id, answers: answers },
+            { userId: req.user.id, answers: orientationData },
             { upsert: true, new: true }
         );
 
-        res.json({ message: 'Đã lưu trắc nghiệm hướng nghiệp!' });
+        console.log('✅ Orientation saved:', result);
+
+        res.json({ success: true, message: 'Đã lưu trắc nghiệm hướng nghiệp!' });
     } catch (error) {
-        console.error('Orientation error:', error);
+        console.error('❌ Orientation error:', error);
         res.status(500).json({ error: 'Lỗi server' });
     }
 });
