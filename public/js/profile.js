@@ -406,6 +406,7 @@ async function loadOrientation(token) {
         });
         
         const data = await response.json();
+        console.log('Orientation data:', data); // Debug log
         
         orientationLoading.classList.add('hidden');
         
@@ -416,6 +417,7 @@ async function loadOrientation(token) {
             noOrientation.classList.remove('hidden');
         }
     } catch (error) {
+        console.error('Error loading orientation:', error); // Debug log
         orientationLoading.innerHTML = '<p class="error">Lỗi tải định hướng</p>';
     }
 }
@@ -629,6 +631,7 @@ async function loadConnections() {
         });
         
         const data = await response.json();
+        console.log('Connections data:', data); // Debug log
         
         loadingEl.classList.add('hidden');
         
@@ -639,6 +642,7 @@ async function loadConnections() {
             noConnectionsEl.classList.remove('hidden');
         }
     } catch (error) {
+        console.error('Error loading connections:', error); // Debug log
         loadingEl.innerHTML = '<p class="error">Lỗi khi tải kết nối</p>';
     }
 }
