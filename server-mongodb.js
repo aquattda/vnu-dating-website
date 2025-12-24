@@ -52,7 +52,7 @@ function authenticateToken(req, res, next) {
 // Đăng ký
 app.post('/api/register', async (req, res) => {
     try {
-        const { studentId, password, name, faculty, year, email, gender, birthYear, hometown, major, facebook, instagram } = req.body;
+        const { studentId, password, name, faculty, year, email, phone, gender, birthYear, hometown, major, facebook, instagram } = req.body;
 
         // Validate required fields
         if (!studentId || !password || !email) {
@@ -80,6 +80,7 @@ app.post('/api/register', async (req, res) => {
             faculty: faculty || major,
             year: year ? parseInt(year) : null,
             email,
+            phone: phone || null,
             gender: gender || null,
             birthYear: birthYear ? parseInt(birthYear) : null,
             hometown: hometown || null,
@@ -87,7 +88,7 @@ app.post('/api/register', async (req, res) => {
             contact: {
                 facebook: facebook || null,
                 instagram: instagram || null,
-                zalo: null
+                zalo: phone || null
             }
         });
 
@@ -827,10 +828,10 @@ app.post('/api/premium/payment', authenticateToken, async (req, res) => {
         const { packageId } = req.body;
 
         const packages = {
-            1: { name: '1 Lượt Match', matches: 1, price: 15000, type: 'one-time' },
-            2: { name: '3 Lượt Match', matches: 3, price: 39000, type: 'one-time' },
-            3: { name: '5 Lượt Match', matches: 5, price: 59000, type: 'one-time' },
-            4: { name: 'Monthly Premium', matches: 30, price: 99000, type: 'monthly' }
+            1: { name: '1 Lượt Match', matches: 1, price: 5000, type: 'one-time' },
+            2: { name: '3 Lượt Match', matches: 3, price: 12000, type: 'one-time' },
+            3: { name: '5 Lượt Match', matches: 5, price: 20000, type: 'one-time' },
+            4: { name: 'Monthly Premium', matches: 30, price: 149000, type: 'monthly' }
         };
 
         const selectedPackage = packages[packageId];
@@ -886,10 +887,10 @@ app.post('/api/premium/create-payment', authenticateToken, async (req, res) => {
         const { packageId } = req.body;
 
         const packages = {
-            1: { name: '1 Lượt Match', matches: 1, price: 15000, type: 'one-time' },
-            2: { name: '3 Lượt Match', matches: 3, price: 39000, type: 'one-time' },
-            3: { name: '5 Lượt Match', matches: 5, price: 59000, type: 'one-time' },
-            4: { name: 'Monthly Premium', matches: 30, price: 99000, type: 'monthly' }
+            1: { name: '1 Lượt Match', matches: 1, price: 5000, type: 'one-time' },
+            2: { name: '3 Lượt Match', matches: 3, price: 12000, type: 'one-time' },
+            3: { name: '5 Lượt Match', matches: 5, price: 20000, type: 'one-time' },
+            4: { name: 'Monthly Premium', matches: 30, price: 149000, type: 'monthly' }
         };
 
         const selectedPackage = packages[packageId];
@@ -953,10 +954,10 @@ app.post('/api/premium/payment-callback', authenticateToken, async (req, res) =>
         if (status === 'success') {
             // Create premium package
             const packages = {
-                1: { name: '1 Lượt Match', matches: 1, price: 15000, type: 'one-time' },
-                2: { name: '3 Lượt Match', matches: 3, price: 39000, type: 'one-time' },
-                3: { name: '5 Lượt Match', matches: 5, price: 59000, type: 'one-time' },
-                4: { name: 'Monthly Premium', matches: 30, price: 99000, type: 'monthly' }
+                1: { name: '1 Lượt Match', matches: 1, price: 5000, type: 'one-time' },
+                2: { name: '3 Lượt Match', matches: 3, price: 12000, type: 'one-time' },
+                3: { name: '5 Lượt Match', matches: 5, price: 20000, type: 'one-time' },
+                4: { name: 'Monthly Premium', matches: 30, price: 149000, type: 'monthly' }
             };
 
             const selectedPackage = packages[packageId];

@@ -82,6 +82,8 @@ async function handleRegister(e) {
     e.preventDefault();
     
     const studentId = document.getElementById('regStudentId').value;
+    const email = document.getElementById('regEmail').value;
+    const phone = document.getElementById('regPhone').value;
     const gender = document.getElementById('regGender').value;
     const birthYear = parseInt(document.getElementById('regBirthYear').value);
     const hometown = document.getElementById('regHometown').value;
@@ -104,6 +106,8 @@ async function handleRegister(e) {
             },
             body: JSON.stringify({ 
                 studentId,
+                email,
+                phone,
                 gender,
                 birthYear,
                 hometown,
