@@ -94,7 +94,7 @@ app.post('/api/register', async (req, res) => {
 
         await newUser.save();
 
-        res.json({ message: 'Đăng ký thành công!' });
+        res.json({ success: true, message: 'Đăng ký thành công!' });
     } catch (error) {
         console.error('Register error:', error);
         res.status(500).json({ error: 'Lỗi server' });

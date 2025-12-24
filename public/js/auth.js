@@ -119,8 +119,9 @@ async function handleRegister(e) {
         });
 
         const data = await response.json();
+        console.log('Register response:', response.status, data); // Debug log
 
-        if (data.success) {
+        if (response.ok && data.success) {
             showMessage('Đăng ký thành công! Vui lòng đăng nhập');
             setTimeout(() => {
                 showLogin();
@@ -129,6 +130,7 @@ async function handleRegister(e) {
             showMessage(data.error || 'Đăng ký thất bại', true);
         }
     } catch (error) {
+        console.error('Register error:', error); // Debug log
         showMessage('Lỗi kết nối server', true);
     }
 }
