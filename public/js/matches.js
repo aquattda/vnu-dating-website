@@ -235,7 +235,7 @@ async function connectWithUser(targetUserId, purpose) {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ targetUserId, purpose })
+            body: JSON.stringify({ matchedUserId: targetUserId, purpose })
         });
         
         const data = await response.json();

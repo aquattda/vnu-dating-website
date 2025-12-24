@@ -522,6 +522,15 @@ app.post('/api/connection', authenticateToken, async (req, res) => {
     try {
         const { matchedUserId, purpose, compatibility } = req.body;
 
+        // Validate required fields
+        if (!matchedUserId) {
+            return res.status(400).json({ error: 'matchedUserId is required' });
+        }
+
+        if (!purpose) {
+            return res.status(400).json({ error: 'purpose is required' });
+        }
+
         // Check if already connected
         const existingConnection = await Connection.findOne({
             userId: req.user.id,
