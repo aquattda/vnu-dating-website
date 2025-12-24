@@ -1,13 +1,13 @@
 /* Side Advertisements - Apply to all pages except premium */
 .ad-side {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     height: 100vh;
     width: 300px;
     z-index: 100;
     overflow-y: auto;
     overflow-x: hidden;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -74,6 +74,12 @@ body.with-side-ads {
 }
 
 /* Responsive adjustments */
+@media (min-width: 1201px) {
+    .ad-side {
+        display: flex !important;
+    }
+}
+
 @media (max-width: 1600px) {
     .ad-side {
         width: 250px;
@@ -94,7 +100,7 @@ body.with-side-ads {
 
 @media (max-width: 1200px) {
     .ad-side {
-        display: none;
+        display: none !important;
     }
     body.with-side-ads {
         margin: 0;
