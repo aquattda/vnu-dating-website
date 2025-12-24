@@ -55,17 +55,17 @@ const orientationSchema = new mongoose.Schema({
 
 // Connection Schema
 const connectionSchema = new mongoose.Schema({
-    id: { type: String, unique: true, index: true },
-    user1Id: { type: String, index: true },
-    user2Id: { type: String, index: true },
-    userId: { type: String, index: true },
-    matchedUserId: { type: String, index: true },
+    userId: { type: String, required: true, index: true },
+    matchedUserId: { type: String, required: true, index: true },
     purpose: { type: String, required: true, index: true },
     status: { type: String, enum: ['active', 'cancelled'], default: 'active' },
     compatibility: { type: Number },
     matchDetails: { type: Object },
     createdAt: { type: Date, default: Date.now }
 });
+
+// Compound index: userId + matchedUserId + purpose should be unique
+connectionSchema.index({ userId: 1, matchedUserId: 1, purpose: 1 }, { unique: true });
 
 // Premium Schema
 const premiumSchema = new mongoose.Schema({
