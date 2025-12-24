@@ -52,11 +52,11 @@ function authenticateToken(req, res, next) {
 // Đăng ký
 app.post('/api/register', async (req, res) => {
     try {
-        const { studentId, password, name, faculty, year, email } = req.body;
+        const { studentId, password, name, faculty, year, email, gender, birthYear, hometown, major, facebook, instagram } = req.body;
 
-        // Validate
-        if (!studentId || !password || !name || !faculty || !year || !email) {
-            return res.status(400).json({ error: 'Vui lòng điền đầy đủ thông tin' });
+        // Validate required fields
+        if (!studentId || !password || !email) {
+            return res.status(400).json({ error: 'Vui lòng điền đầy đủ thông tin bắt buộc' });
         }
 
         // Check if user exists
@@ -71,14 +71,24 @@ app.post('/api/register', async (req, res) => {
         // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Create user
+        // Create user with all fields
         const newUser = new User({
+            id: 'user_' + Date.now(),
             studentId,
             password: hashedPassword,
-            name,
-            faculty,
-            year: parseInt(year),
-            email
+            name: name || 'VNU Student',
+            faculty: faculty || major,
+            year: year ? parseInt(year) : null,
+            email,
+            gender: gender || null,
+            birthYear: birthYear ? parseInt(birthYear) : null,
+            hometown: hometown || null,
+            major: major || faculty,
+            contact: {
+                facebook: facebook || null,
+                instagram: instagram || null,
+                zalo: null
+            }
         });
 
         await newUser.save();
@@ -575,7 +585,10 @@ app.post('/api/connection', authenticateToken, async (req, res) => {
             },
             partnerContact: {
                 email: matchedUser ? matchedUser.email : null,
-                name: matchedUser ? matchedUser.name : 'Unknown'
+                name: matchedUser ? matchedUser.name : 'Unknown',
+                facebook: matchedUser?.contact?.facebook || null,
+                instagram: matchedUser?.contact?.instagram || null,
+                zalo: matchedUser?.contact?.zalo || null
             }
         });
     } catch (error) {

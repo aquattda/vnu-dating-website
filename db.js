@@ -14,12 +14,23 @@ const connectDB = async () => {
 
 // User Schema
 const userSchema = new mongoose.Schema({
+    id: { type: String, unique: true, index: true },
     studentId: { type: String, required: true, unique: true, index: true },
     password: { type: String, required: true },
-    name: { type: String, required: true },
-    faculty: { type: String, required: true },
-    year: { type: Number, required: true },
+    name: { type: String },
     email: { type: String, required: true, unique: true },
+    phone: { type: String },
+    gender: { type: String, enum: ['male', 'female', 'other'] },
+    birthYear: { type: Number },
+    hometown: { type: String },
+    major: { type: String },
+    faculty: { type: String },
+    year: { type: Number },
+    contact: {
+        facebook: { type: String },
+        instagram: { type: String },
+        zalo: { type: String }
+    },
     createdAt: { type: Date, default: Date.now }
 });
 
@@ -43,10 +54,14 @@ const orientationSchema = new mongoose.Schema({
 
 // Connection Schema
 const connectionSchema = new mongoose.Schema({
-    userId: { type: String, required: true, index: true },
-    matchedUserId: { type: String, required: true, index: true },
+    id: { type: String, unique: true, index: true },
+    user1Id: { type: String, index: true },
+    user2Id: { type: String, index: true },
+    userId: { type: String, index: true },
+    matchedUserId: { type: String, index: true },
     purpose: { type: String, required: true, index: true },
-    compatibility: { type: Number, required: true },
+    status: { type: String, enum: ['active', 'cancelled'], default: 'active' },
+    compatibility: { type: Number },
     matchDetails: { type: Object },
     createdAt: { type: Date, default: Date.now }
 });

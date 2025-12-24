@@ -392,7 +392,21 @@ function showContactInfo(userId, contact) {
                 `;
             }
             
-            if (!contact.facebook && !contact.instagram) {
+            if (contact.zalo) {
+                contactHtml += `
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 12px; padding: 12px; background: white; border-radius: 8px;">
+                        <span style="font-size: 24px;">💬</span>
+                        <div>
+                            <div style="font-size: 0.85em; color: var(--gray); margin-bottom: 4px;">Zalo:</div>
+                            <span style="color: var(--primary); font-weight: 600;">
+                               ${contact.zalo}
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            if (!contact.facebook && !contact.instagram && !contact.zalo && !contact.email) {
                 contactHtml += `
                     <div style="text-align: center; color: var(--gray); padding: 12px;">
                         Người này chưa cung cấp thông tin liên hệ
