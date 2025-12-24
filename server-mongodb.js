@@ -635,6 +635,16 @@ app.post('/api/connection', authenticateToken, async (req, res) => {
         // CHECK PREMIUM: Verify and deduct match
         const userPremiums = await Premium.find({ userId: req.user.id });
         
+        console.log('🔍 Found premiums for user:', {
+            userId: req.user.id,
+            premiumCount: userPremiums.length,
+            premiums: userPremiums.map(p => ({
+                id: p._id,
+                remainingMatches: p.remainingMatches,
+                expiresAt: p.expiresAt
+            }))
+        });
+        
         // Find valid premium package
         const validPremium = userPremiums.find(p => {
             if (p.remainingMatches <= 0) return false;
@@ -643,6 +653,12 @@ app.post('/api/connection', authenticateToken, async (req, res) => {
             }
             return true;
         });
+        
+        console.log('💎 Valid premium:', validPremium ? {
+            id: validPremium._id,
+            remainingMatches: validPremium.remainingMatches,
+            expiresAt: validPremium.expiresAt
+        } : 'NONE');
 
         let isFreeMatch = false;
         let remainingMatches = 0;
@@ -650,6 +666,12 @@ app.post('/api/connection', authenticateToken, async (req, res) => {
         if (!validPremium) {
             // No premium - check 24h cooldown for free match
             const user = await User.findOne({ studentId: req.user.id });
+            
+            if (!user) {
+                console.error('❌ User not found with studentId:', req.user.id);
+                return res.status(404).json({ error: 'Không tìm thấy thông tin người dùng' });
+            }
+            
             const now = new Date();
             const lastFreeMatch = user.lastFreeMatchTime;
             
