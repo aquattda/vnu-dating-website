@@ -460,6 +460,8 @@ app.get('/api/matches', authenticateToken, async (req, res) => {
                     ]
                 });
                 
+                console.log(`🔍 Checking ${profile.userId} for purpose ${purpose}: ${existingConnection ? 'CONNECTED' : 'NOT CONNECTED'}`);
+                
                 matches.push({
                     userId: profile.userId,
                     name: matchedUser ? matchedUser.name : 'Unknown',
@@ -575,14 +577,16 @@ app.post('/api/connection', authenticateToken, async (req, res) => {
             return res.status(400).json({ error: 'purpose is required' });
         }
 
-        // Check if already connected
+        // Check if already connected (bidirectional check)
         const existingConnection = await Connection.findOne({
-            userId: req.user.id,
-            matchedUserId,
-            purpose
+            $or: [
+                { userId: req.user.id, matchedUserId, purpose },
+                { userId: matchedUserId, matchedUserId: req.user.id, purpose }
+            ]
         });
 
         if (existingConnection) {
+            console.log('⚠️ Already connected:', existingConnection);
             return res.status(400).json({ error: 'Bạn đã kết nối với người này rồi' });
         }
 
@@ -596,6 +600,7 @@ app.post('/api/connection', authenticateToken, async (req, res) => {
         });
 
         await newConnection.save();
+        console.log('✅ Connection created:', newConnection);
 
         // Get matched user info
         const matchedUser = await User.findOne({ studentId: matchedUserId });
@@ -661,16 +666,34 @@ app.get('/api/my-connections', authenticateToken, async (req, res) => {
                 // Determine who is the "other" person
                 const otherUserId = conn.userId === req.user.id ? conn.matchedUserId : conn.userId;
                 const user = await User.findOne({ studentId: otherUserId });
+                
+                // Get profile for this purpose
+                const profile = await Profile.findOne({ 
+                    userId: otherUserId,
+                    purpose: conn.purpose 
+                });
+                
                 return {
                     id: conn._id,
                     matchedUserId: otherUserId,
-                    name: user ? user.name : 'Unknown',
-                    faculty: user ? user.faculty : 'Unknown',
-                    year: user ? user.year : 0,
-                    email: user ? user.email : null,
                     purpose: conn.purpose,
                     compatibility: conn.compatibility,
-                    createdAt: conn.createdAt
+                    createdAt: conn.createdAt,
+                    partner: {
+                        studentId: otherUserId,
+                        name: user ? user.name : 'Unknown',
+                        faculty: user ? user.faculty : 'Unknown',
+                        year: user ? user.year : 0,
+                        email: user ? user.email : null,
+                        contact: user ? {
+                            facebook: user.contact?.facebook || user.facebook,
+                            instagram: user.contact?.instagram || user.instagram,
+                            zalo: user.contact?.zalo || user.zalo
+                        } : {},
+                        profile: profile ? {
+                            answers: profile.answers
+                        } : null
+                    }
                 };
             })
         );
