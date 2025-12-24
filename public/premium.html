@@ -318,7 +318,7 @@
         async function buyPackage(packageId, amount) {
             try {
                 const token = localStorage.getItem('token');
-                const response = await fetch(`${API_URL}/premium/create-payment`, {
+                const response = await fetch(`${API_URL}/premium/payment`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
