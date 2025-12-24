@@ -434,6 +434,7 @@ app.get('/api/matches', authenticateToken, async (req, res) => {
                     name: matchedUser ? matchedUser.name : 'Unknown',
                     faculty: matchedUser ? matchedUser.faculty : 'Unknown',
                     year: matchedUser ? matchedUser.year : 0,
+                    purpose: purpose,  // Add purpose to match object
                     compatibility: compatibility.percentage,
                     matchDetails: compatibility,
                     isConnected: !!existingConnection

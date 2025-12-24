@@ -127,7 +127,7 @@ function createMatchCard(match) {
                 <p class="info-note" style="text-align: center; margin-bottom: 16px; color: var(--gray); font-size: 0.9em;">
                     🔒 Thông tin liên hệ sẽ được hiển thị sau khi bạn kết nối với người này
                 </p>
-                <button class="btn btn-primary" onclick="connectWithUser('${match.userId}', '${localStorage.getItem('purpose')}')">
+                <button class="btn btn-primary" onclick="connectWithUser('${match.userId}', '${match.purpose || purpose || localStorage.getItem('purpose') || ''}')">
                     🤝 Kết nối với người này
                 </button>
             </div>
