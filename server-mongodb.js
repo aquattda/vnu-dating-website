@@ -428,7 +428,8 @@ app.get('/api/matches', authenticateToken, async (req, res) => {
                 purpose
             );
 
-            if (compatibility.percentage >= 60) {
+            // Only include matches >= 70% (changed from 60%)
+            if (compatibility.percentage >= 70) {
                 // Get user info
                 const matchedUser = await User.findOne({ studentId: profile.userId });
                 
@@ -444,7 +445,7 @@ app.get('/api/matches', authenticateToken, async (req, res) => {
                     name: matchedUser ? matchedUser.name : 'Unknown',
                     faculty: matchedUser ? matchedUser.faculty : 'Unknown',
                     year: matchedUser ? matchedUser.year : 0,
-                    purpose: purpose,  // Add purpose to match object
+                    purpose: purpose,
                     compatibility: compatibility.percentage,
                     matchDetails: compatibility,
                     isConnected: !!existingConnection
@@ -455,7 +456,11 @@ app.get('/api/matches', authenticateToken, async (req, res) => {
         // Sort by compatibility
         matches.sort((a, b) => b.compatibility - a.compatibility);
 
-        res.json({ matches });
+        // LUỒNG ĐÚNG: Chỉ trả về 1 người phù hợp nhất chưa kết nối
+        const bestMatch = matches.find(m => !m.isConnected);
+        const result = bestMatch ? [bestMatch] : [];
+
+        res.json({ matches: result });
     } catch (error) {
         console.error('Get matches error:', error);
         res.status(500).json({ error: 'Lỗi server' });
