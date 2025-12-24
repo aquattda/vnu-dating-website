@@ -521,14 +521,22 @@ app.post('/api/connect', authenticateToken, async (req, res) => {
 // Create connection (POST)
 app.post('/api/connection', authenticateToken, async (req, res) => {
     try {
+        console.log('📥 Connection request received:', {
+            userId: req.user.id,
+            body: req.body,
+            headers: req.headers['content-type']
+        });
+
         const { matchedUserId, purpose, compatibility } = req.body;
 
         // Validate required fields
         if (!matchedUserId) {
+            console.error('❌ matchedUserId is missing');
             return res.status(400).json({ error: 'matchedUserId is required' });
         }
 
         if (!purpose) {
+            console.error('❌ purpose is missing');
             return res.status(400).json({ error: 'purpose is required' });
         }
 
