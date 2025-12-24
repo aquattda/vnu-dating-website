@@ -4,9 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Banner Responsive - VNU Dating</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/side-ads.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* FORCE BANNER DISPLAY WITH INLINE STYLES */
+        .ad-side {
+            position: fixed !important;
+            top: 0 !important;
+            height: 100vh !important;
+            z-index: 9999 !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            gap: 15px !important;
+            padding: 10px 5px !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 2px solid red !important; /* Debug border */
+        }
+
+        .ad-left {
+            left: 0 !important;
+            width: 250px !important;
+        }
+
+        .ad-right {
+            right: 0 !important;
+            width: 250px !important;
+        }
+
+        .ad-side img {
+            width: 100% !important;
+            height: auto !important;
+            display: block !important;
+            border: 2px solid blue !important; /* Debug border */
+            background: white !important;
+        }
+
+        /* Content with margin for ads */
+        body.with-side-ads {
+            margin: 0 270px !important;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
         .test-info {
             position: fixed;
             top: 10px;
@@ -16,19 +73,24 @@
             padding: 10px 20px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
+            z-index: 10000;
             font-size: 14px;
             text-align: center;
         }
+
         .test-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
             margin-top: 80px;
             text-align: center;
-            padding: 20px;
         }
+
         .test-content h1 {
             color: #667eea;
             margin-bottom: 20px;
         }
+
         .device-info {
             background: #f5f5f5;
             padding: 15px;
@@ -36,28 +98,68 @@
             margin: 20px auto;
             max-width: 600px;
         }
+
         .checklist {
             text-align: left;
             margin: 20px auto;
             max-width: 600px;
         }
+
         .checklist li {
             padding: 8px 0;
             border-bottom: 1px solid #eee;
         }
+
+        .debug-info {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .ad-left, .ad-right {
+                width: 150px !important;
+            }
+            body.with-side-ads {
+                margin: 0 170px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ad-left, .ad-right {
+                width: 100px !important;
+            }
+            body.with-side-ads {
+                margin: 0 120px !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .ad-left, .ad-right {
+                width: 70px !important;
+            }
+            body.with-side-ads {
+                margin: 0 90px !important;
+            }
+        }
     </style>
 </head>
 <body class="with-side-ads">
-    <!-- Left Side Advertisement -->
-    <div class="ad-side ad-left">
-        <img src="images/ad-left.jpg" alt="Advertisement Left 1">
-        <img src="images/ad-left-2.png" alt="Advertisement Left 2">
+    <!-- Left Side Advertisement - INLINE STYLE FOR FORCE DISPLAY -->
+    <div class="ad-side ad-left" style="position: fixed !important; display: flex !important; left: 0 !important;">
+        <img src="images/ad-left.jpg" alt="Advertisement Left 1" style="display: block !important; width: 100% !important;">
+        <img src="images/ad-left-2.png" alt="Advertisement Left 2" style="display: block !important; width: 100% !important;">
     </div>
 
-    <!-- Right Side Advertisement -->
-    <div class="ad-side ad-right">
-        <img src="images/ad-right.png" alt="Advertisement Right 1">
-        <img src="images/ad-right-2.png" alt="Advertisement Right 2">
+    <!-- Right Side Advertisement - INLINE STYLE FOR FORCE DISPLAY -->
+    <div class="ad-side ad-right" style="position: fixed !important; display: flex !important; right: 0 !important;">
+        <img src="images/ad-right.png" alt="Advertisement Right 1" style="display: block !important; width: 100% !important;">
+        <img src="images/ad-right-2.png" alt="Advertisement Right 2" style="display: block !important; width: 100% !important;">
     </div>
 
     <!-- Test Info -->
@@ -138,23 +240,107 @@
         updateDeviceInfo();
 
         // Update on resize
-        window.addEventListener('resize', updateDeviceInfo);
+            <div class="debug-info">
+                <h3>🔍 Debug Information:</h3>
+                <p><strong>Left Ad Element:</strong> <span id="leftAdStatus"></span></p>
+                <p><strong>Right Ad Element:</strong> <span id="rightAdStatus"></span></p>
+                <p><strong>Left Ad Display:</strong> <span id="leftAdDisplay"></span></p>
+                <p><strong>Right Ad Display:</strong> <span id="rightAdDisplay"></span></p>
+                <p><strong>Images Loaded:</strong> <span id="imagesLoaded"></span></p>
+            </div>
 
-        // Check if ads are visible
-        setTimeout(() => {
+            <div style="margin-top: 30px;">
+                <h3>Kích thước banner theo thiết bị:</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li>📱 Mobile ≤576px: Banner 70px</li>
+                    <li>📱 Tablet 577-768px: Banner 100px</li>
+                    <li>💻 Desktop 769-992px: Banner 150px</li>
+                    <li>🖥️ Desktop >992px: Banner 250px</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #d4edda; border-radius: 8px; border: 2px solid #28a745;">
+                <p><strong>✅ ĐANG DÙNG INLINE STYLE:</strong></p>
+                <p>Banner được force hiển thị bằng inline style với !important</p>
+                <p>Nếu vẫn không thấy → Có thể do ảnh không load được</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateDeviceInfo() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const dpr = window.devicePixelRatio || 1;
+            const orientation = width > height ? 'Landscape' : 'Portrait';
+            
+            let deviceType = '';
+            if (width <= 576) deviceType = 'Mobile';
+            else if (width <= 768) deviceType = 'Tablet Small';
+            else if (width <= 992) deviceType = 'Tablet/Desktop Small';
+            else deviceType = 'Desktop';
+
+            document.getElementById('screenSize').textContent = `${width}×${height}`;
+            document.getElementById('deviceType').textContent = deviceType;
+            document.getElementById('width').textContent = width;
+            document.getElementById('height').textContent = height;
+            document.getElementById('dpr').textContent = dpr;
+            document.getElementById('orientation').textContent = orientation;
+        }
+
+        function checkAds() {
             const leftAd = document.querySelector('.ad-left');
             const rightAd = document.querySelector('.ad-right');
             
-            console.log('Left ad visible:', leftAd && window.getComputedStyle(leftAd).display !== 'none');
-            console.log('Right ad visible:', rightAd && window.getComputedStyle(rightAd).display !== 'none');
+            const leftAdExists = !!leftAd;
+            const rightAdExists = !!rightAd;
             
-            if (!leftAd || window.getComputedStyle(leftAd).display === 'none') {
-                alert('⚠️ CẢNH BÁO: Banner trái KHÔNG hiển thị!');
+            const leftDisplay = leftAd ? window.getComputedStyle(leftAd).display : 'N/A';
+            const rightDisplay = rightAd ? window.getComputedStyle(rightAd).display : 'N/A';
+            
+            document.getElementById('leftAdStatus').textContent = leftAdExists ? '✅ Found' : '❌ Not Found';
+            document.getElementById('rightAdStatus').textContent = rightAdExists ? '✅ Found' : '❌ Not Found';
+            document.getElementById('leftAdDisplay').textContent = leftDisplay;
+            document.getElementById('rightAdDisplay').textContent = rightDisplay;
+            
+            // Check images
+            const allImages = document.querySelectorAll('.ad-side img');
+            let loadedCount = 0;
+            allImages.forEach(img => {
+                if (img.complete && img.naturalHeight > 0) {
+                    loadedCount++;
+                }
+            });
+            document.getElementById('imagesLoaded').textContent = `${loadedCount}/${allImages.length}`;
+            
+            console.log('=== AD DEBUG INFO ===');
+            console.log('Left ad exists:', leftAdExists);
+            console.log('Right ad exists:', rightAdExists);
+            console.log('Left display:', leftDisplay);
+            console.log('Right display:', rightDisplay);
+            console.log('Images loaded:', loadedCount, '/', allImages.length);
+            
+            if (leftDisplay === 'none' || rightDisplay === 'none') {
+                console.error('⚠️ BANNER BỊ ẨN!');
             }
-            if (!rightAd || window.getComputedStyle(rightAd).display === 'none') {
-                alert('⚠️ CẢNH BÁO: Banner phải KHÔNG hiển thị!');
-            }
-        }, 500);
+        }
+
+        // Update on load
+        updateDeviceInfo();
+        
+        // Check ads after page load
+        window.addEventListener('load', () => {
+            setTimeout(checkAds, 500);
+        });
+
+        // Update on resize
+        window.addEventListener('resize', () => {
+            updateDeviceInfo();
+            checkAds();
+        });
+        
+        // Initial check
+        setTimeout(checkAds, 100);
     </script>
 </body>
 </html>
