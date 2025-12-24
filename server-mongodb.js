@@ -577,6 +577,48 @@ app.post('/api/connection', authenticateToken, async (req, res) => {
             return res.status(400).json({ error: 'purpose is required' });
         }
 
+        // CHECK PREMIUM: Verify and deduct match
+        const userPremiums = await Premium.find({ userId: req.user.id });
+        
+        // Find valid premium package
+        const validPremium = userPremiums.find(p => {
+            if (p.remainingMatches <= 0) return false;
+            if (p.expiresAt) {
+                return new Date(p.expiresAt) > new Date();
+            }
+            return true;
+        });
+
+        let isFreeMatch = false;
+        let remainingMatches = 0;
+
+        if (!validPremium) {
+            // No premium - check 24h cooldown for free match
+            const user = await User.findOne({ studentId: req.user.id });
+            const now = new Date();
+            const lastFreeMatch = user.lastFreeMatchTime;
+            
+            if (lastFreeMatch) {
+                const hoursSinceLastMatch = (now - new Date(lastFreeMatch)) / (1000 * 60 * 60);
+                if (hoursSinceLastMatch < 24) {
+                    const hoursRemaining = Math.ceil(24 - hoursSinceLastMatch);
+                    return res.status(403).json({ 
+                        error: `Bạn cần đợi ${hoursRemaining} giờ nữa để match miễn phí hoặc mua premium`,
+                        errorCode: 'COOLDOWN_ACTIVE',
+                        hoursRemaining
+                    });
+                }
+            }
+            
+            // Allow free match
+            isFreeMatch = true;
+            user.lastFreeMatchTime = now;
+            await user.save();
+            console.log('✅ Free match granted (24h cooldown starts)');
+        } else {
+            remainingMatches = validPremium.remainingMatches;
+        }
+
         // Check if already connected (bidirectional check)
         const existingConnection = await Connection.findOne({
             $or: [
@@ -588,6 +630,14 @@ app.post('/api/connection', authenticateToken, async (req, res) => {
         if (existingConnection) {
             console.log('⚠️ Already connected:', existingConnection);
             return res.status(400).json({ error: 'Bạn đã kết nối với người này rồi' });
+        }
+
+        // Deduct premium match (only if not free match)
+        if (!isFreeMatch) {
+            validPremium.remainingMatches -= 1;
+            await validPremium.save();
+            remainingMatches = validPremium.remainingMatches;
+            console.log(`💎 Premium deducted: ${remainingMatches} matches remaining`);
         }
 
         // Create connection
@@ -608,6 +658,8 @@ app.post('/api/connection', authenticateToken, async (req, res) => {
         res.json({
             success: true,
             message: 'Kết nối thành công!',
+            isFreeMatch,
+            remainingMatches,
             connection: {
                 matchedUserId,
                 name: matchedUser ? matchedUser.name : 'Unknown',

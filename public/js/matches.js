@@ -253,12 +253,22 @@ async function connectWithUser(targetUserId, purpose) {
         console.log('📥 Response data:', data);
         
         if (data.success) {
+            // Update premium status if returned
+            if (data.remainingMatches !== undefined) {
+                updatePremiumDisplay(data.remainingMatches);
+            }
+            
             // Hiển thị thông tin liên hệ ngay trên card
             showContactInfo(targetUserId, data.partnerContact);
-            customSuccess(
-                data.message + '\n\n📱 Thông tin liên hệ đã được hiển thị bên dưới.\n⏰ Bạn sẽ có thể kết nối với người khác sau 24 giờ.',
-                'Kết nối thành công'
-            );
+            
+            let message = data.message + '\n\n📱 Thông tin liên hệ đã được hiển thị bên dưới.';
+            if (data.isFreeMatch) {
+                message += '\n\n⏰ Match miễn phí! Bạn sẽ có thể match lại sau 24 giờ.';
+            } else if (data.remainingMatches !== undefined) {
+                message += `\n\n💎 Còn ${data.remainingMatches} lượt match`;
+            }
+            
+            customSuccess(message, 'Kết nối thành công');
         } else {
             // Xử lý các loại lỗi khác nhau
             if (data.errorCode === 'ALREADY_CONNECTED_BEFORE') {
@@ -426,6 +436,17 @@ function showContactInfo(userId, contact) {
             }
         }
     });
+}
+
+function updatePremiumDisplay(remainingMatches) {
+    // Try to update if premium display exists on page
+    const premiumMatchesEl = document.getElementById('premiumMatches');
+    if (premiumMatchesEl) {
+        premiumMatchesEl.textContent = remainingMatches;
+    }
+    
+    // Show notification
+    console.log(`💎 Premium updated: ${remainingMatches} matches remaining`);
 }
 
 // Init

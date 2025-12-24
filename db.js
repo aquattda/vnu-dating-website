@@ -31,6 +31,7 @@ const userSchema = new mongoose.Schema({
         instagram: { type: String },
         zalo: { type: String }
     },
+    lastFreeMatchTime: { type: Date }, // Track last free match for 24h cooldown
     createdAt: { type: Date, default: Date.now }
 });
 
