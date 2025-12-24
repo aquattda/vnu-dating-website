@@ -1,18 +1,17 @@
-/* Side Advertisements - Apply to all pages except premium */
+/* Side Advertisements - ALWAYS VISIBLE on all devices */
 .ad-side {
     position: fixed !important;
     top: 0;
     height: 100vh;
-    width: 300px;
     z-index: 100;
     overflow-y: auto;
     overflow-x: hidden;
     display: flex !important;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 0;
-    padding: 0;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 10px 5px;
     background: transparent;
     scrollbar-width: thin;
     scrollbar-color: rgba(102, 126, 234, 0.2) transparent;
@@ -37,7 +36,6 @@
 
 .ad-left {
     left: 0;
-    gap: 20px;
 }
 
 .ad-right {
@@ -49,60 +47,173 @@
     height: auto;
     max-width: 100%;
     object-fit: contain;
-    display: block;
+    display: block !important;
     border: none;
-    box-shadow: none;
-    transition: none;
-    background: transparent;
-    padding: 0;
-    margin: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    background: #fff;
 }
 
-.ad-side img:hover {
-    transform: none;
+/* ========== RESPONSIVE DESIGN - ALL DEVICES ========== */
+
+/* Desktop Large (>1600px) */
+@media (min-width: 1601px) {
+    .ad-side {
+        width: 300px;
+    }
+    .ad-left {
+        left: 10px;
+    }
+    .ad-right {
+        right: 10px;
+    }
+    body.with-side-ads {
+        margin: 0 330px;
+    }
 }
 
-/* Adjust body margin to prevent content overlap */
-body.with-side-ads {
-    margin: 0 320px;
+/* Desktop Medium (1201px - 1600px) */
+@media (min-width: 1201px) and (max-width: 1600px) {
+    .ad-side {
+        width: 240px;
+    }
+    .ad-left {
+        left: 5px;
+    }
+    .ad-right {
+        right: 5px;
+    }
+    body.with-side-ads {
+        margin: 0 260px;
+    }
 }
 
+/* Desktop Small (993px - 1200px) */
+@media (min-width: 993px) and (max-width: 1200px) {
+    .ad-side {
+        width: 180px;
+    }
+    .ad-left {
+        left: 5px;
+    }
+    .ad-right {
+        right: 5px;
+    }
+    body.with-side-ads {
+        margin: 0 200px;
+    }
+}
+
+/* Tablet (769px - 992px) */
+@media (min-width: 769px) and (max-width: 992px) {
+    .ad-side {
+        width: 140px;
+    }
+    .ad-left {
+        left: 2px;
+    }
+    .ad-right {
+        right: 2px;
+    }
+    body.with-side-ads {
+        margin: 0 155px;
+    }
+    .ad-side img {
+        border-radius: 3px;
+    }
+}
+
+/* Tablet Small & Mobile Large (577px - 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .ad-side {
+        width: 100px;
+    }
+    .ad-left {
+        left: 0;
+    }
+    .ad-right {
+        right: 0;
+    }
+    body.with-side-ads {
+        margin: 0 110px;
+    }
+    .ad-side {
+        gap: 10px;
+        padding: 5px 2px;
+    }
+}
+
+/* Mobile (≤576px) - Banner dọc nhỏ bên cạnh */
+@media (max-width: 576px) {
+    .ad-side {
+        width: 70px;
+    }
+    .ad-left {
+        left: 0;
+    }
+    .ad-right {
+        right: 0;
+    }
+    body.with-side-ads {
+        margin: 0 75px;
+    }
+    .ad-side {
+        gap: 8px;
+        padding: 5px 1px;
+    }
+    .ad-side img {
+        border-radius: 2px;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+}
+
+/* Extra Small Mobile (≤400px) - Banner siêu nhỏ */
+@media (max-width: 400px) {
+    .ad-side {
+        width: 50px;
+    }
+    .ad-left {
+        left: 0;
+    }
+    .ad-right {
+        right: 0;
+    }
+    body.with-side-ads {
+        margin: 0 55px;
+    }
+    .ad-side {
+        gap: 5px;
+        padding: 3px 1px;
+    }
+}
+
+/* Container responsive */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Responsive adjustments */
-@media (min-width: 1201px) {
-    .ad-side {
-        display: flex !important;
-    }
-}
-
-@media (max-width: 1600px) {
-    .ad-side {
-        width: 250px;
-    }
-    body.with-side-ads {
-        margin: 0 270px;
+@media (max-width: 768px) {
+    .container {
+        padding: 15px 10px;
     }
 }
 
-@media (max-width: 1400px) {
-    .ad-side {
-        width: 200px;
-    }
-    body.with-side-ads {
-        margin: 0 220px;
+@media (max-width: 576px) {
+    .container {
+        padding: 10px 5px;
     }
 }
 
-@media (max-width: 1200px) {
-    .ad-side {
-        display: none !important;
-    }
-    body.with-side-ads {
-        margin: 0;
-    }
+/* Đảm bảo banner KHÔNG BAO GIỜ bị ẩn */
+.ad-side,
+.ad-left,
+.ad-right {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
+

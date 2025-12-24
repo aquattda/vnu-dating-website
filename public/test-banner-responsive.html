@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Banner Responsive - VNU Dating</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/side-ads.css">
+    <style>
+        .test-info {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            font-size: 14px;
+            text-align: center;
+        }
+        .test-content {
+            margin-top: 80px;
+            text-align: center;
+            padding: 20px;
+        }
+        .test-content h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        .device-info {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .checklist {
+            text-align: left;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        .checklist li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+<body class="with-side-ads">
+    <!-- Left Side Advertisement -->
+    <div class="ad-side ad-left">
+        <img src="images/ad-left.jpg" alt="Advertisement Left 1">
+        <img src="images/ad-left-2.png" alt="Advertisement Left 2">
+    </div>
+
+    <!-- Right Side Advertisement -->
+    <div class="ad-side ad-right">
+        <img src="images/ad-right.png" alt="Advertisement Right 1">
+        <img src="images/ad-right-2.png" alt="Advertisement Right 2">
+    </div>
+
+    <!-- Test Info -->
+    <div class="test-info">
+        <strong>Screen:</strong> <span id="screenSize"></span> | 
+        <strong>Device:</strong> <span id="deviceType"></span>
+    </div>
+
+    <div class="container">
+        <div class="test-content">
+            <h1>🎯 Test Banner Quảng Cáo Responsive</h1>
+            
+            <div class="device-info">
+                <h3>Thông tin màn hình hiện tại:</h3>
+                <p><strong>Width:</strong> <span id="width"></span>px</p>
+                <p><strong>Height:</strong> <span id="height"></span>px</p>
+                <p><strong>Device Pixel Ratio:</strong> <span id="dpr"></span></p>
+                <p><strong>Orientation:</strong> <span id="orientation"></span></p>
+            </div>
+
+            <div class="checklist">
+                <h3>✅ Checklist kiểm tra:</h3>
+                <ul>
+                    <li>✓ Banner bên trái hiển thị</li>
+                    <li>✓ Banner bên phải hiển thị</li>
+                    <li>✓ Ảnh trong banner load đầy đủ</li>
+                    <li>✓ Không bị che nội dung chính</li>
+                    <li>✓ Responsive khi resize window</li>
+                    <li>✓ Scroll banner khi có nhiều ảnh</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h3>Kích thước banner theo thiết bị:</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li>📱 Mobile ≤400px: Banner 50px</li>
+                    <li>📱 Mobile ≤576px: Banner 70px</li>
+                    <li>📱 Tablet 577-768px: Banner 100px</li>
+                    <li>💻 Tablet 769-992px: Banner 140px</li>
+                    <li>💻 Desktop 993-1200px: Banner 180px</li>
+                    <li>🖥️ Desktop 1201-1600px: Banner 240px</li>
+                    <li>🖥️ Desktop >1600px: Banner 300px</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: #fff3cd; border-radius: 8px;">
+                <p><strong>⚠️ Lưu ý:</strong> Banner quảng cáo <strong>BẮT BUỘC</strong> hiển thị trên mọi thiết bị!</p>
+                <p>Nếu không thấy banner, vui lòng báo lỗi kèm screenshot.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateDeviceInfo() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const dpr = window.devicePixelRatio || 1;
+            const orientation = width > height ? 'Landscape' : 'Portrait';
+            
+            let deviceType = '';
+            if (width <= 400) deviceType = 'Mobile Extra Small';
+            else if (width <= 576) deviceType = 'Mobile';
+            else if (width <= 768) deviceType = 'Tablet Small';
+            else if (width <= 992) deviceType = 'Tablet';
+            else if (width <= 1200) deviceType = 'Desktop Small';
+            else if (width <= 1600) deviceType = 'Desktop Medium';
+            else deviceType = 'Desktop Large';
+
+            document.getElementById('screenSize').textContent = `${width}×${height}`;
+            document.getElementById('deviceType').textContent = deviceType;
+            document.getElementById('width').textContent = width;
+            document.getElementById('height').textContent = height;
+            document.getElementById('dpr').textContent = dpr;
+            document.getElementById('orientation').textContent = orientation;
+        }
+
+        // Update on load
+        updateDeviceInfo();
+
+        // Update on resize
+        window.addEventListener('resize', updateDeviceInfo);
+
+        // Check if ads are visible
+        setTimeout(() => {
+            const leftAd = document.querySelector('.ad-left');
+            const rightAd = document.querySelector('.ad-right');
+            
+            console.log('Left ad visible:', leftAd && window.getComputedStyle(leftAd).display !== 'none');
+            console.log('Right ad visible:', rightAd && window.getComputedStyle(rightAd).display !== 'none');
+            
+            if (!leftAd || window.getComputedStyle(leftAd).display === 'none') {
+                alert('⚠️ CẢNH BÁO: Banner trái KHÔNG hiển thị!');
+            }
+            if (!rightAd || window.getComputedStyle(rightAd).display === 'none') {
+                alert('⚠️ CẢNH BÁO: Banner phải KHÔNG hiển thị!');
+            }
+        }, 500);
+    </script>
+</body>
+</html>
