@@ -152,12 +152,31 @@ app.get('/api/profile', authenticateToken, async (req, res) => {
             return res.status(404).json({ error: 'Không tìm thấy người dùng' });
         }
 
+        // Get all profiles (questionnaire answers) for this user
+        const profiles = await Profile.find({ userId: req.user.id });
+
+        // Format profiles with user info
+        const formattedProfiles = profiles.map(profile => ({
+            purpose: profile.purpose,
+            answers: profile.answers,
+            completedAt: profile.completedAt,
+            userInfo: {
+                studentId: user.studentId,
+                name: user.name,
+                faculty: user.faculty,
+                year: user.year,
+                email: user.email,
+                contact: user.contact
+            }
+        }));
+
         res.json({
             id: user.studentId,
             name: user.name,
             faculty: user.faculty,
             year: user.year,
-            email: user.email
+            email: user.email,
+            profiles: formattedProfiles  // Add profiles array
         });
     } catch (error) {
         console.error('Get profile error:', error);
