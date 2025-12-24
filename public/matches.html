@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNU Dating - Kết quả phù hợp</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/side-ads.css">
+</head>
+<body class="with-side-ads">
+    <!-- Left Side Advertisement -->
+    <div class="ad-side ad-left">
+        <img src="images/ad-left.jpg" alt="Advertisement">
+        <img src="images/ad-left-2.png" alt="Advertisement">
+    </div>
+
+    <!-- Right Side Advertisement -->
+    <div class="ad-side ad-right">
+        <img src="images/ad-right.png" alt="Advertisement">
+        <img src="images/ad-right-2.png" alt="Advertisement">
+    </div>
+
+    <div class="container">
+        <div class="matches-box">
+            <div class="header">
+                <h1>🎯 Kết quả phù hợp</h1>
+                <div class="header-actions">
+                    <button onclick="window.location.href='profile.html'" class="btn btn-secondary">👤 Hồ sơ</button>
+                    <button onclick="goToPurpose()" class="btn btn-secondary">Đổi mục đích</button>
+                    <button onclick="logout()" class="btn-logout">Đăng xuất</button>
+                </div>
+            </div>
+
+            <div id="loadingMessage" class="loading">
+                <p>Đang tìm kiếm những người phù hợp với bạn...</p>
+            </div>
+
+            <div id="matchesContainer" class="matches-container hidden">
+                <!-- Matches sẽ được render ở đây -->
+            </div>
+
+            <div id="noMatches" class="no-matches hidden">
+                <div class="icon">😔</div>
+                <h3>Chưa có kết quả phù hợp ≥70%</h3>
+                <p>Hiện tại chưa có người dùng nào có tỷ lệ phù hợp ≥70% với bạn trong cùng mục đích này.</p>
+                <p style="font-size: 0.95em; color: #888; margin-top: 10px;">
+                    💡 Tip: Hãy thử điều chỉnh câu trả lời của bạn hoặc quay lại sau khi có thêm người dùng mới!
+                </p>
+                <button onclick="goToPurpose()" class="btn btn-primary">Chọn lại mục đích</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/modal.js"></script>
+    <script src="js/matches.js"></script>
+</body>
+</html>

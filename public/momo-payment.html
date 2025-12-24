@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoMo Payment Gateway</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #a80077 0%, #66023c 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .payment-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .momo-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .momo-logo h1 {
+            color: #a80077;
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        .momo-logo p {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .payment-info {
+            background: #f5f5f5;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .info-value {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .amount {
+            font-size: 2em;
+            color: #a80077;
+            font-weight: bold;
+        }
+
+        .payment-form {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #a80077;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.1s;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-pay {
+            background: linear-gradient(135deg, #a80077 0%, #66023c 100%);
+            color: white;
+        }
+
+        .btn-pay:hover {
+            opacity: 0.9;
+        }
+
+        .btn-cancel {
+            background: #f5f5f5;
+            color: #666;
+        }
+
+        .btn-cancel:hover {
+            background: #e0e0e0;
+        }
+
+        .security-note {
+            text-align: center;
+            color: #999;
+            font-size: 0.85em;
+            margin-top: 20px;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #a80077;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .success-animation {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .success-animation.active {
+            display: block;
+        }
+
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 3;
+            stroke: #4caf50;
+            stroke-miterlimit: 10;
+            margin: 0 auto 20px;
+            box-shadow: inset 0px 0px 0px #4caf50;
+            animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+        }
+
+        .checkmark__circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 3;
+            stroke-miterlimit: 10;
+            stroke: #4caf50;
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        .checkmark__check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+
+        @keyframes stroke {
+            100% {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes scale {
+            0%, 100% {
+                transform: none;
+            }
+            50% {
+                transform: scale3d(1.1, 1.1, 1);
+            }
+        }
+
+        @keyframes fill {
+            100% {
+                box-shadow: inset 0px 0px 0px 30px #4caf50;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <div class="momo-logo">
+            <h1>MoMo</h1>
+            <p>Ví điện tử MoMo</p>
+        </div>
+
+        <div id="paymentForm" class="payment-form-section">
+            <div class="payment-info">
+                <div class="info-row">
+                    <span class="info-label">Mã đơn hàng:</span>
+                    <span class="info-value" id="orderId">-</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Số tiền:</span>
+                    <span class="info-value amount" id="amount">0đ</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Nội dung:</span>
+                    <span class="info-value">VNU Dating Premium</span>
+                </div>
+            </div>
+
+            <div class="payment-form">
+                <div class="form-group">
+                    <label for="phone">Số điện thoại MoMo</label>
+                    <input type="tel" id="phone" placeholder="Nhập số điện thoại" value="0901234567">
+                </div>
+                <div class="form-group">
+                    <label for="pin">Mã PIN</label>
+                    <input type="password" id="pin" placeholder="Nhập mã PIN" value="123456" maxlength="6">
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-cancel" onclick="cancelPayment()">Hủy</button>
+                <button class="btn btn-pay" onclick="processPayment()">Thanh toán</button>
+            </div>
+
+            <div class="security-note">
+                🔒 Giao dịch được mã hóa và bảo mật<br>
+                (Đây là giao dịch giả lập - Demo only)
+            </div>
+        </div>
+
+        <div id="loadingSection" class="loading">
+            <div class="spinner"></div>
+            <p>Đang xử lý thanh toán...</p>
+        </div>
+
+        <div id="successSection" class="success-animation">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+            <h2 style="color: #4caf50; margin-bottom: 10px;">Thanh toán thành công!</h2>
+            <p style="color: #666; margin-bottom: 20px;">Bạn sẽ được chuyển về trang chủ...</p>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000/api';
+        let orderId = '';
+        let amount = 0;
+
+        function init() {
+            const params = new URLSearchParams(window.location.search);
+            orderId = params.get('orderId');
+            amount = parseInt(params.get('amount'));
+
+            if (!orderId || !amount) {
+                alert('Thông tin thanh toán không hợp lệ');
+                window.location.href = 'premium.html';
+                return;
+            }
+
+            document.getElementById('orderId').textContent = orderId;
+            document.getElementById('amount').textContent = formatMoney(amount);
+        }
+
+        function formatMoney(amount) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+        }
+
+        async function processPayment() {
+            const phone = document.getElementById('phone').value;
+            const pin = document.getElementById('pin').value;
+
+            if (!phone || !pin) {
+                alert('Vui lòng nhập đầy đủ thông tin');
+                return;
+            }
+
+            if (pin.length !== 6) {
+                alert('Mã PIN phải có 6 số');
+                return;
+            }
+
+            // Show loading
+            document.getElementById('paymentForm').style.display = 'none';
+            document.getElementById('loadingSection').classList.add('active');
+
+            // Simulate payment processing (2 seconds)
+            setTimeout(async () => {
+                try {
+                    // Call backend to confirm payment
+                    const response = await fetch(`${API_URL}/premium/payment-callback`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            orderId: orderId,
+                            status: 'success'
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        // Show success animation
+                        document.getElementById('loadingSection').classList.remove('active');
+                        document.getElementById('successSection').classList.add('active');
+
+                        // Redirect after 3 seconds
+                        setTimeout(() => {
+                            window.location.href = 'profile.html?payment=success';
+                        }, 3000);
+                    } else {
+                        alert('Thanh toán thất bại: ' + (data.message || 'Unknown error'));
+                        window.location.href = 'premium.html?payment=failed';
+                    }
+                } catch (error) {
+                    console.error('Payment error:', error);
+                    alert('Có lỗi xảy ra trong quá trình thanh toán');
+                    window.location.href = 'premium.html?payment=error';
+                }
+            }, 2000);
+        }
+
+        function cancelPayment() {
+            if (confirm('Bạn có chắc muốn hủy thanh toán?')) {
+                window.location.href = 'premium.html?payment=cancelled';
+            }
+        }
+
+        // Initialize
+        init();
+    </script>
+</body>
+</html>

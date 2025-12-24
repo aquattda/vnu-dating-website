@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNU Dating - Đăng nhập</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .ad-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            animation: popupAppear 0.3s ease;
+        }
+
+        .ad-popup.show {
+            display: block;
+        }
+
+        @keyframes popupAppear {
+            from { 
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to { 
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .ad-box {
+            position: relative;
+            width: 400px;
+            max-width: 90vw;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 4px solid #FFD700;
+        }
+
+        .ad-close-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 32px;
+            height: 32px;
+            background: #2d5016;
+            border: 2px solid #FFD700;
+            border-radius: 50%;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            font-weight: bold;
+        }
+
+        .ad-close-btn:hover {
+            background: #1a3009;
+            transform: scale(1.1);
+        }
+
+        .ad-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .ad-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+        }
+
+        .ad-overlay.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .ad-box {
+                width: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ad-box {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="auth-box">
+            <h1>🎓 VNU Dating</h1>
+            <p class="subtitle">Kết nối sinh viên VNU</p>
+
+            <div id="loginForm" class="form-container">
+                <h2>Đăng nhập</h2>
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="loginStudentId">Mã sinh viên</label>
+                        <input type="text" id="loginStudentId" placeholder="VD: 20020001" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Mật khẩu</label>
+                        <input type="password" id="loginPassword" placeholder="Nhập mật khẩu" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                </form>
+                <p class="switch-text">
+                    Chưa có tài khoản? <a href="#" onclick="showRegister()">Đăng ký ngay</a>
+                </p>
+                <p class="forgot-password">
+                    <a href="#" onclick="showForgotPassword()">Quên mật khẩu?</a>
+                </p>
+            </div>
+
+            <div id="registerForm" class="form-container hidden">
+                <h2>Đăng ký</h2>
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="regStudentId">Mã sinh viên</label>
+                        <input type="text" id="regStudentId" placeholder="VD: 20020001" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email</label>
+                        <input type="email" id="regEmail" placeholder="email@vnu.edu.vn" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPhone">Số điện thoại</label>
+                        <input type="tel" id="regPhone" placeholder="VD: 0912345678" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regGender">Giới tính</label>
+                        <select id="regGender" required>
+                            <option value="">-- Chọn giới tính --</option>
+                            <option value="male">Nam</option>
+                            <option value="female">Nữ</option>
+                            <option value="other">Khác</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="regBirthYear">Năm sinh</label>
+                        <input type="number" id="regBirthYear" placeholder="VD: 2002" min="1990" max="2010" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regHometown">Quê quán</label>
+                        <input type="text" id="regHometown" placeholder="VD: Hà Nội" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regMajor">Ngành học</label>
+                        <input type="text" id="regMajor" placeholder="VD: Công nghệ thông tin" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regFacebook">Facebook (Link hoặc tên)</label>
+                        <input type="text" id="regFacebook" placeholder="facebook.com/yourname hoặc tên FB">
+                    </div>
+                    <div class="form-group">
+                        <label for="regInstagram">Instagram (Username)</label>
+                        <input type="text" id="regInstagram" placeholder="@username">
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Mật khẩu</label>
+                        <input type="password" id="regPassword" placeholder="Tối thiểu 6 ký tự" required minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="regConfirmPassword">Xác nhận mật khẩu</label>
+                        <input type="password" id="regConfirmPassword" placeholder="Nhập lại mật khẩu" required>
+                    </div>
+                    <p class="info-text" style="font-size: 13px; color: #e74c3c;">
+                        🔒 Thông tin liên hệ chỉ được hiển thị sau khi bạn kết nối với người phù hợp
+                    </p>
+                    <button type="submit" class="btn btn-primary">Đăng ký</button>
+                </form>
+                <p class="switch-text">
+                    Đã có tài khoản? <a href="#" onclick="showLogin()">Đăng nhập</a>
+                </p>
+            </div>
+
+            <div id="forgotPasswordForm" class="form-container hidden">
+                <h2>Quên mật khẩu</h2>
+                <p class="info-text">Vui lòng liên hệ admin để được hỗ trợ reset mật khẩu</p>
+                <div class="form-group">
+                    <label for="forgotStudentId">Mã sinh viên</label>
+                    <input type="text" id="forgotStudentId" placeholder="VD: 20020001">
+                </div>
+                <p class="info-text">Email hỗ trợ: admin@vnu.edu.vn</p>
+                <button onclick="showLogin()" class="btn btn-secondary">Quay lại đăng nhập</button>
+            </div>
+
+            <div id="message" class="message hidden"></div>
+        </div>
+    </div>
+
+    <!-- Advertisement Popup -->
+    <div id="adOverlay" class="ad-overlay" onclick="closeAdModal()"></div>
+    <div id="adPopup" class="ad-popup">
+        <div class="ad-box">
+            <button class="ad-close-btn" onclick="closeAdModal()">×</button>
+            <img src="images/ad-banner.jpg" alt="Advertisement" class="ad-image">
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

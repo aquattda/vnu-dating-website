@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNU Dating - Câu hỏi tìm người nghiên cứu</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/side-ads.css">
+</head>
+<body class="with-side-ads">
+    <!-- Left Side Advertisement -->
+    <div class="ad-side ad-left">
+        <img src="images/ad-left.jpg" alt="Advertisement">
+        <img src="images/ad-left-2.png" alt="Advertisement">
+    </div>
+
+    <!-- Right Side Advertisement -->
+    <div class="ad-side ad-right">
+        <img src="images/ad-right.png" alt="Advertisement">
+        <img src="images/ad-right-2.png" alt="Advertisement">
+    </div>
+
+    <div class="container">
+        <div class="questionnaire-box">
+            <div class="header">
+                <h1>🔬 Tìm người nghiên cứu khoa học</h1>
+                <div class="header-actions">
+                    <a href="profile.html" class="btn-profile">👤 Hồ sơ</a>
+                    <button onclick="logout()" class="btn-logout">Đăng xuất</button>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <p class="progress-text">Câu <span id="currentQ">1</span> / 16</p>
+
+            <form id="researchForm" onsubmit="handleSubmit(event)">
+                <!-- SECTION I: THÔNG TIN NGHIÊN CỨU CƠ BẢN -->
+                <div class="question-section active" data-section="1">
+                    <h3>1. Mục tiêu nghiên cứu hiện tại của bạn là:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="researchGoal" value="studentResearch" required>
+                            <span>📋 Làm đề tài nghiên cứu khoa học sinh viên</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="researchGoal" value="conference">
+                            <span>📝 Viết bài hội thảo / tạp chí</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="researchGoal" value="findPartner">
+                            <span>🔍 Chưa có đề tài cụ thể, muốn tìm cộng sự phù hợp</span>
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                </div>
+
+                <div class="question-section" data-section="2">
+                    <h3>2. Bạn là đối tượng nào? <span style="color: #ff6b6b;">(Câu quan trọng - Tỷ trọng x2)</span></h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="myStatus" value="hasTopic" required>
+                            <span>✅ Đã có đề tài</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="myStatus" value="noTopic">
+                            <span>❓ Chưa có đề tài</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="3">
+                    <h3>3. Bạn muốn tìm đối tượng nào? <span style="color: #ff6b6b;">(Câu quan trọng - Tỷ trọng x2)</span></h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="partnerStatus" value="hasTopic" required>
+                            <span>✅ Đã có đề tài</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="partnerStatus" value="noTopic">
+                            <span>❓ Chưa có đề tài</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="4">
+                    <h3>4. Lĩnh vực nghiên cứu chính của bạn:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="researchField" value="socialHumanities" required>
+                            <span>🏛️ Khoa học xã hội & Nhân văn</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="researchField" value="naturalScience">
+                            <span>🔬 Khoa học tự nhiên</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="researchField" value="languageEducation">
+                            <span>🌍 Ngôn ngữ – Giáo dục</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="researchField" value="businessManagement">
+                            <span>💼 Kinh tế – Quản lý</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="researchField" value="technology">
+                            <span>💻 Công nghệ – Kỹ thuật</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="5">
+                    <h3>5. Bạn đã từng tham gia nghiên cứu khoa học chưa?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="researchExperience" value="never" required>
+                            <span>🆕 Chưa từng</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="researchExperience" value="once">
+                            <span>📚 Đã từng (1–2 lần)</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="6">
+                    <h3>6. Vai trò bạn mong muốn trong nhóm nghiên cứu:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="preferredRole" value="ideaProposer" required>
+                            <span>💡 Người đề xuất ý tưởng</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="preferredRole" value="dataCollector">
+                            <span>📊 Người thu thập dữ liệu</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="preferredRole" value="dataAnalyst">
+                            <span>📈 Người phân tích – xử lý số liệu</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="preferredRole" value="writer">
+                            <span>✍️ Người viết và chỉnh sửa bài</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="preferredRole" value="flexible">
+                            <span>🎭 Có thể đảm nhiệm nhiều vai trò</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <!-- SECTION II: PHONG CÁCH & THÁI ĐỘ NGHIÊN CỨU -->
+                <div class="question-section" data-section="7">
+                    <h3>7. Phong cách làm việc của bạn nghiêng về:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="workStyle" value="detailed" required>
+                            <span>📋 Có kế hoạch chi tiết, bám sát tiến độ</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="workStyle" value="flexible">
+                            <span>🔄 Linh hoạt, điều chỉnh theo quá trình nghiên cứu</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="workStyle" value="creative">
+                            <span>💡 Sáng tạo, ưu tiên ý tưởng mới</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="8">
+                    <h3>8. Khi gặp khó khăn trong nghiên cứu, bạn thường:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="problemSolving" value="proactive" required>
+                            <span>🔍 Chủ động tìm tài liệu và giải pháp</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="problemSolving" value="collaborative">
+                            <span>💬 Trao đổi với nhóm / giảng viên</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="problemSolving" value="needSupport">
+                            <span>🤝 Cần người hỗ trợ, hướng dẫn thêm</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="9">
+                    <h3>9. Mức độ cam kết của bạn với nghiên cứu:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="commitment" value="verySerious" required>
+                            <span>⭐ Rất nghiêm túc, ưu tiên cao</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="commitment" value="serious">
+                            <span>✨ Nghiêm túc nhưng phụ thuộc thời gian học</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="commitment" value="learning">
+                            <span>📚 Tham gia để học hỏi là chính</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="10">
+                    <h3>10. Bạn có khả năng làm việc độc lập không?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="independence" value="veryGood" required>
+                            <span>💪 Rất tốt</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="independence" value="good">
+                            <span>👍 Ở mức khá</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="independence" value="needGuidance">
+                            <span>🤝 Cần có người hướng dẫn sát sao</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <!-- SECTION III: THỜI GIAN & HÌNH THỨC NGHIÊN CỨU -->
+                <div class="question-section" data-section="11">
+                    <h3>11. Thời gian bạn có thể dành cho nghiên cứu mỗi tuần:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="weeklyHours" value="under5" required>
+                            <span>⏱️ Dưới 5 giờ</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="weeklyHours" value="5to10">
+                            <span>⏰ 5–10 giờ</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="weeklyHours" value="over10">
+                            <span>⏳ Trên 10 giờ</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="12">
+                    <h3>12. Hình thức làm việc mong muốn: <span style="color: #ff6b6b;">(Câu quan trọng - Tỷ trọng x2)</span></h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="workFormat" value="online" required>
+                            <span>💻 Online</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="workFormat" value="offline">
+                            <span>🏫 Offline</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="workFormat" value="hybrid">
+                            <span>🔄 Kết hợp</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="13">
+                    <h3>13. Thời gian dự kiến của dự án nghiên cứu:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="projectDuration" value="short" required>
+                            <span>📅 Ngắn hạn (1–2 tháng)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="projectDuration" value="medium">
+                            <span>📆 Trung hạn (3–6 tháng)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="projectDuration" value="long">
+                            <span>🗓️ Dài hạn (trên 6 tháng)</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <!-- SECTION IV: YÊU CẦU ĐỐI VỚI CỘNG SỰ NGHIÊN CỨU -->
+                <div class="question-section" data-section="14">
+                    <h3>14. Bạn mong muốn cộng sự nghiên cứu là người:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="partnerExpectation" value="responsible" required>
+                            <span>🛡️ Có tinh thần trách nhiệm cao</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="partnerExpectation" value="logical">
+                            <span>🧠 Tư duy logic, phản biện tốt</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="partnerExpectation" value="proactive">
+                            <span>⚡ Chủ động, đúng deadline</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="partnerExpectation" value="academic">
+                            <span>📚 Sẵn sàng trao đổi học thuật nghiêm túc</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="partnerExpectation" value="experienced">
+                            <span>⭐ Có kinh nghiệm nghiên cứu</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="15">
+                    <h3>15. Bạn ưu tiên cộng sự:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="partnerPreference" value="sameMajor" required>
+                            <span>🎓 Cùng ngành / chuyên ngành</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="partnerPreference" value="complementary">
+                            <span>🔄 Khác ngành nhưng bổ trợ kiến thức</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="partnerPreference" value="attitudeMatters">
+                            <span>💖 Không quan trọng ngành, quan trọng thái độ</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <!-- SECTION V: MỨC ĐỘ KỲ VỌNG & ĐỊNH HƯỚNG -->
+                <div class="question-section" data-section="16">
+                    <h3>16. Kết quả nghiên cứu bạn mong muốn:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="expectedResult" value="meetRequirements" required>
+                            <span>✅ Hoàn thành đề tài đúng yêu cầu</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="expectedResult" value="highQuality">
+                            <span>⭐ Có sản phẩm học thuật chất lượng cao</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="expectedResult" value="publish">
+                            <span>🏆 Có thể công bố hoặc dự thi nghiên cứu khoa học</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="expectedResult" value="learning">
+                            <span>📚 Chủ yếu để học hỏi kinh nghiệm</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="submit" class="btn btn-primary">🎉 Hoàn thành</button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="message" class="message hidden"></div>
+        </div>
+    </div>
+
+    <script src="js/questionnaire.js"></script>
+</body>
+</html>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="5">
+                    <h3>5. Bạn tìm kiếm partner cho?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="purpose" value="thesis" required>
+                            <span>Đề tài luận văn</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="purpose" value="project">
+                            <span>Dự án nghiên cứu</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="purpose" value="paper">
+                            <span>Viết bài báo</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="purpose" value="general">
+                            <span>Nghiên cứu chung</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="6">
+                    <h3>6. Thời gian dự kiến cho dự án?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="duration" value="short" required>
+                            <span>Ngắn hạn (< 3 tháng)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="duration" value="medium">
+                            <span>Trung hạn (3-6 tháng)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="duration" value="long">
+                            <span>Dài hạn (> 6 tháng)</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="7">
+                    <h3>7. Phong cách làm việc của bạn?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="workStyle" value="flexible" required>
+                            <span>Linh hoạt</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="workStyle" value="structured">
+                            <span>Có kế hoạch cụ thể</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="workStyle" value="intensive">
+                            <span>Tập trung cao độ</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="8">
+                    <h3>8. Bạn thích làm việc ở đâu?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="workLocation" value="library" required>
+                            <span>Thư viện</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="workLocation" value="lab">
+                            <span>Phòng lab</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="workLocation" value="home">
+                            <span>Nhà riêng</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="workLocation" value="online">
+                            <span>Làm việc online</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="9">
+                    <h3>9. Khung giờ làm việc ưu tiên?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="workTime" value="morning" required>
+                            <span>Sáng sớm</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="workTime" value="afternoon">
+                            <span>Chiều</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="workTime" value="evening">
+                            <span>Tối</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="workTime" value="flexible">
+                            <span>Linh hoạt</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="10">
+                    <h3>10. Bạn cần partner có kỹ năng gì?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="skillNeeded" value="technical" required>
+                            <span>Kỹ thuật/Lập trình</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="skillNeeded" value="writing">
+                            <span>Viết lách/Nghiên cứu lý thuyết</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="skillNeeded" value="data">
+                            <span>Phân tích dữ liệu</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="skillNeeded" value="all">
+                            <span>Đa năng</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="11">
+                    <h3>11. Bạn có kinh nghiệm làm việc nhóm không?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="teamwork" value="yes" required>
+                            <span>Có, rất nhiều</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="teamwork" value="some">
+                            <span>Có một ít</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="teamwork" value="no">
+                            <span>Chưa có</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="12">
+                    <h3>12. Điều quan trọng nhất khi làm việc nhóm?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="teamValue" value="commitment" required>
+                            <span>Cam kết/Trách nhiệm</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="teamValue" value="communication">
+                            <span>Giao tiếp tốt</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="teamValue" value="skill">
+                            <span>Kỹ năng chuyên môn</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="teamValue" value="creativity">
+                            <span>Sáng tạo</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">Quay lại</button>
+                        <button type="submit" class="btn btn-primary">Hoàn thành</button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="message" class="message hidden"></div>
+        </div>
+    </div>
+
+    <script>
+        const totalQuestions = 12;
+    </script>
+    <script src="js/questionnaire.js"></script>
+</body>
+</html>

@@ -1,0 +1,802 @@
+[
+  {
+    "userId": "1000000001",
+    "purpose": "friend",
+    "answers": {
+      "friendPurpose": "activities",
+      "friendStyle": "friendly",
+      "contactFrequency": "often",
+      "friendExpectation": "sincere"
+    },
+    "createdAt": "2025-12-24T08:42:50.699Z"
+  },
+  {
+    "userId": "1000000002",
+    "purpose": "friend",
+    "answers": {
+      "friendPurpose": "activities",
+      "friendStyle": "friendly",
+      "contactFrequency": "often",
+      "friendExpectation": "sincere"
+    },
+    "createdAt": "2025-12-24T08:42:50.699Z"
+  },
+  {
+    "userId": "1000000003",
+    "purpose": "friend",
+    "answers": {
+      "friendPurpose": "other",
+      "friendStyle": "friendly",
+      "contactFrequency": "often",
+      "friendExpectation": "respectPrivacy"
+    },
+    "createdAt": "2025-12-24T08:42:50.699Z"
+  },
+  {
+    "userId": "1000000004",
+    "purpose": "friend",
+    "answers": {
+      "friendPurpose": "chat",
+      "friendStyle": "calm",
+      "contactFrequency": "whenNeeded",
+      "friendExpectation": "listening"
+    },
+    "createdAt": "2025-12-24T08:42:50.699Z"
+  },
+  {
+    "userId": "1000000005",
+    "purpose": "friend",
+    "answers": {
+      "friendPurpose": "chat",
+      "friendStyle": "calm",
+      "contactFrequency": "whenNeeded",
+      "friendExpectation": "listening"
+    },
+    "createdAt": "2025-12-24T08:42:50.699Z"
+  },
+  {
+    "userId": "1000000006",
+    "purpose": "study",
+    "answers": {
+      "studyGoal": "other",
+      "studyField": "socialScience",
+      "punctuality": "often",
+      "studyEfficiency": "planned",
+      "groupRole": "leader",
+      "proactivity": "balanced",
+      "studyFormat": "offline",
+      "studyFrequency": "flexible",
+      "partnerExpectation": "punctual"
+    },
+    "createdAt": "2025-12-24T08:42:50.699Z"
+  },
+  {
+    "userId": "1000000007",
+    "purpose": "study",
+    "answers": {
+      "studyGoal": "examPrep",
+      "studyField": "naturalScience",
+      "punctuality": "often",
+      "studyEfficiency": "planned",
+      "groupRole": "active",
+      "proactivity": "proactive",
+      "studyFormat": "online",
+      "studyFrequency": "fewTimesWeek",
+      "partnerExpectation": "serious"
+    },
+    "createdAt": "2025-12-24T08:42:50.699Z"
+  },
+  {
+    "userId": "1000000008",
+    "purpose": "study",
+    "answers": {
+      "studyGoal": "groupStudy",
+      "studyField": "language",
+      "punctuality": "always",
+      "studyEfficiency": "planned",
+      "groupRole": "support",
+      "proactivity": "needGuidance",
+      "studyFormat": "hybrid",
+      "studyFrequency": "flexible",
+      "partnerExpectation": "punctual"
+    },
+    "createdAt": "2025-12-24T08:42:50.699Z"
+  },
+  {
+    "userId": "1000000009",
+    "purpose": "study",
+    "answers": {
+      "studyGoal": "groupStudy",
+      "studyField": "technology",
+      "punctuality": "sometimes",
+      "studyEfficiency": "planned",
+      "groupRole": "active",
+      "proactivity": "balanced",
+      "studyFormat": "hybrid",
+      "studyFrequency": "flexible",
+      "partnerExpectation": "knowledgeable"
+    },
+    "createdAt": "2025-12-24T08:42:50.699Z"
+  },
+  {
+    "userId": "1000000010",
+    "purpose": "study",
+    "answers": {
+      "studyGoal": "examPrep",
+      "studyField": "naturalScience",
+      "punctuality": "often",
+      "studyEfficiency": "planned",
+      "groupRole": "active",
+      "proactivity": "proactive",
+      "studyFormat": "online",
+      "studyFrequency": "fewTimesWeek",
+      "partnerExpectation": "serious"
+    },
+    "createdAt": "2025-12-24T08:42:50.699Z"
+  },
+  {
+    "userId": "1000000011",
+    "purpose": "study",
+    "answers": {
+      "studyGoal": "project",
+      "studyField": "economics",
+      "punctuality": "often",
+      "studyEfficiency": "flexible",
+      "groupRole": "listener",
+      "proactivity": "veryProactive",
+      "studyFormat": "hybrid",
+      "studyFrequency": "fewTimesWeek",
+      "partnerExpectation": "other"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000012",
+    "purpose": "study",
+    "answers": {
+      "studyGoal": "groupStudy",
+      "studyField": "naturalScience",
+      "punctuality": "often",
+      "studyEfficiency": "flexible",
+      "groupRole": "support",
+      "proactivity": "balanced",
+      "studyFormat": "offline",
+      "studyFrequency": "weekly",
+      "partnerExpectation": "friendly"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000013",
+    "purpose": "study",
+    "answers": {
+      "studyGoal": "other",
+      "studyField": "language",
+      "punctuality": "often",
+      "studyEfficiency": "needMotivation",
+      "groupRole": "listener",
+      "proactivity": "veryProactive",
+      "studyFormat": "online",
+      "studyFrequency": "daily",
+      "partnerExpectation": "patient"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000014",
+    "purpose": "study",
+    "answers": {
+      "studyGoal": "examPrep",
+      "studyField": "other",
+      "punctuality": "sometimes",
+      "studyEfficiency": "flexible",
+      "groupRole": "listener",
+      "proactivity": "proactive",
+      "studyFormat": "hybrid",
+      "studyFrequency": "daily",
+      "partnerExpectation": "serious"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000015",
+    "purpose": "study",
+    "answers": {
+      "studyGoal": "homework",
+      "studyField": "naturalScience",
+      "punctuality": "often",
+      "studyEfficiency": "flexible",
+      "groupRole": "active",
+      "proactivity": "proactive",
+      "studyFormat": "hybrid",
+      "studyFrequency": "flexible",
+      "partnerExpectation": "punctual"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000016",
+    "purpose": "love",
+    "answers": {
+      "height": "170-175",
+      "selfAppearance": "average",
+      "appearanceImportance": "important",
+      "idealAppearance": "natural",
+      "personality": "extrovert",
+      "freeTime": "outdoor",
+      "relationshipRole": "leading",
+      "datingAtmosphere": "lively",
+      "communicationStyle": "direct",
+      "conflictStyle": "discuss",
+      "loveValues": "respect",
+      "relationshipType": "serious",
+      "timeCommitment": "flexible",
+      "meetingReadiness": "afterChat"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000017",
+    "purpose": "love",
+    "answers": {
+      "height": "160-165",
+      "selfAppearance": "confident",
+      "appearanceImportance": "notImportant",
+      "idealAppearance": "natural",
+      "personality": "balanced",
+      "freeTime": "depends",
+      "relationshipRole": "equal",
+      "datingAtmosphere": "lively",
+      "communicationStyle": "direct",
+      "conflictStyle": "depends",
+      "loveValues": "respect",
+      "relationshipType": "casual",
+      "timeCommitment": "highCommitment",
+      "meetingReadiness": "needTime"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000018",
+    "purpose": "love",
+    "answers": {
+      "height": "160-165",
+      "selfAppearance": "average",
+      "appearanceImportance": "veryImportant",
+      "idealAppearance": "natural",
+      "personality": "introvert",
+      "freeTime": "outdoor",
+      "relationshipRole": "equal",
+      "datingAtmosphere": "quiet",
+      "communicationStyle": "direct",
+      "conflictStyle": "discuss",
+      "loveValues": "empathy",
+      "relationshipType": "serious",
+      "timeCommitment": "highCommitment",
+      "meetingReadiness": "afterChat"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000019",
+    "purpose": "love",
+    "answers": {
+      "height": "165-170",
+      "selfAppearance": "modest",
+      "appearanceImportance": "important",
+      "idealAppearance": "natural",
+      "personality": "introvert",
+      "freeTime": "outdoor",
+      "relationshipRole": "leading",
+      "datingAtmosphere": "quiet",
+      "communicationStyle": "direct",
+      "conflictStyle": "depends",
+      "loveValues": "empathy",
+      "relationshipType": "serious",
+      "timeCommitment": "flexible",
+      "meetingReadiness": "soon"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000020",
+    "purpose": "love",
+    "answers": {
+      "height": "under160",
+      "selfAppearance": "average",
+      "appearanceImportance": "important",
+      "idealAppearance": "stylish",
+      "personality": "balanced",
+      "freeTime": "outdoor",
+      "relationshipRole": "equal",
+      "datingAtmosphere": "natural",
+      "communicationStyle": "balanced",
+      "conflictStyle": "giveSpace",
+      "loveValues": "loyalty",
+      "relationshipType": "casual",
+      "timeCommitment": "highCommitment",
+      "meetingReadiness": "soon"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000021",
+    "purpose": "love",
+    "answers": {
+      "height": "175-180",
+      "selfAppearance": "average",
+      "appearanceImportance": "veryImportant",
+      "idealAppearance": "stylish",
+      "personality": "balanced",
+      "freeTime": "depends",
+      "relationshipRole": "leading",
+      "datingAtmosphere": "quiet",
+      "communicationStyle": "direct",
+      "conflictStyle": "giveSpace",
+      "loveValues": "honesty",
+      "relationshipType": "casual",
+      "timeCommitment": "flexible",
+      "meetingReadiness": "needTime"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000022",
+    "purpose": "love",
+    "answers": {
+      "height": "over180",
+      "selfAppearance": "modest",
+      "appearanceImportance": "notImportant",
+      "idealAppearance": "natural",
+      "personality": "balanced",
+      "freeTime": "outdoor",
+      "relationshipRole": "equal",
+      "datingAtmosphere": "quiet",
+      "communicationStyle": "gentle",
+      "conflictStyle": "giveSpace",
+      "loveValues": "loyalty",
+      "relationshipType": "serious",
+      "timeCommitment": "flexible",
+      "meetingReadiness": "afterChat"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000023",
+    "purpose": "love",
+    "answers": {
+      "height": "170-175",
+      "selfAppearance": "average",
+      "appearanceImportance": "important",
+      "idealAppearance": "natural",
+      "personality": "extrovert",
+      "freeTime": "outdoor",
+      "relationshipRole": "following",
+      "datingAtmosphere": "lively",
+      "communicationStyle": "direct",
+      "conflictStyle": "discuss",
+      "loveValues": "respect",
+      "relationshipType": "serious",
+      "timeCommitment": "flexible",
+      "meetingReadiness": "afterChat"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000024",
+    "purpose": "love",
+    "answers": {
+      "height": "over180",
+      "selfAppearance": "confident",
+      "appearanceImportance": "veryImportant",
+      "idealAppearance": "notMatter",
+      "personality": "introvert",
+      "freeTime": "indoor",
+      "relationshipRole": "following",
+      "datingAtmosphere": "natural",
+      "communicationStyle": "gentle",
+      "conflictStyle": "depends",
+      "loveValues": "honesty",
+      "relationshipType": "serious",
+      "timeCommitment": "moderate",
+      "meetingReadiness": "afterChat"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000025",
+    "purpose": "love",
+    "answers": {
+      "height": "165-170",
+      "selfAppearance": "modest",
+      "appearanceImportance": "veryImportant",
+      "idealAppearance": "stylish",
+      "personality": "balanced",
+      "freeTime": "depends",
+      "relationshipRole": "equal",
+      "datingAtmosphere": "quiet",
+      "communicationStyle": "balanced",
+      "conflictStyle": "depends",
+      "loveValues": "loyalty",
+      "relationshipType": "serious",
+      "timeCommitment": "highCommitment",
+      "meetingReadiness": "needTime"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000026",
+    "purpose": "love",
+    "answers": {
+      "height": "160-165",
+      "selfAppearance": "average",
+      "appearanceImportance": "veryImportant",
+      "idealAppearance": "natural",
+      "personality": "introvert",
+      "freeTime": "outdoor",
+      "relationshipRole": "equal",
+      "datingAtmosphere": "quiet",
+      "communicationStyle": "direct",
+      "conflictStyle": "discuss",
+      "loveValues": "empathy",
+      "relationshipType": "serious",
+      "timeCommitment": "highCommitment",
+      "meetingReadiness": "afterChat"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000027",
+    "purpose": "love",
+    "answers": {
+      "height": "under160",
+      "selfAppearance": "confident",
+      "appearanceImportance": "notImportant",
+      "idealAppearance": "notMatter",
+      "personality": "extrovert",
+      "freeTime": "depends",
+      "relationshipRole": "following",
+      "datingAtmosphere": "natural",
+      "communicationStyle": "balanced",
+      "conflictStyle": "discuss",
+      "loveValues": "empathy",
+      "relationshipType": "exploring",
+      "timeCommitment": "highCommitment",
+      "meetingReadiness": "soon"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000028",
+    "purpose": "love",
+    "answers": {
+      "height": "165-170",
+      "selfAppearance": "modest",
+      "appearanceImportance": "notImportant",
+      "idealAppearance": "stylish",
+      "personality": "balanced",
+      "freeTime": "indoor",
+      "relationshipRole": "following",
+      "datingAtmosphere": "lively",
+      "communicationStyle": "balanced",
+      "conflictStyle": "discuss",
+      "loveValues": "loyalty",
+      "relationshipType": "exploring",
+      "timeCommitment": "highCommitment",
+      "meetingReadiness": "soon"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000029",
+    "purpose": "love",
+    "answers": {
+      "height": "under160",
+      "selfAppearance": "confident",
+      "appearanceImportance": "notImportant",
+      "idealAppearance": "notMatter",
+      "personality": "balanced",
+      "freeTime": "outdoor",
+      "relationshipRole": "leading",
+      "datingAtmosphere": "lively",
+      "communicationStyle": "direct",
+      "conflictStyle": "depends",
+      "loveValues": "honesty",
+      "relationshipType": "serious",
+      "timeCommitment": "moderate",
+      "meetingReadiness": "needTime"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000030",
+    "purpose": "love",
+    "answers": {
+      "height": "165-170",
+      "selfAppearance": "confident",
+      "appearanceImportance": "notImportant",
+      "idealAppearance": "notMatter",
+      "personality": "introvert",
+      "freeTime": "indoor",
+      "relationshipRole": "equal",
+      "datingAtmosphere": "quiet",
+      "communicationStyle": "balanced",
+      "conflictStyle": "giveSpace",
+      "loveValues": "empathy",
+      "relationshipType": "serious",
+      "timeCommitment": "highCommitment",
+      "meetingReadiness": "afterChat"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000031",
+    "purpose": "research",
+    "answers": {
+      "researchGoal": "studentResearch",
+      "myStatus": "noTopic",
+      "partnerStatus": "hasTopic",
+      "researchField": "technology",
+      "researchExperience": "never",
+      "preferredRole": "dataCollector",
+      "workStyle": "detailed",
+      "problemSolving": "collaborative",
+      "commitment": "verySerious",
+      "independence": "good",
+      "weeklyHours": "5to10",
+      "workFormat": "hybrid",
+      "projectDuration": "medium",
+      "partnerExpectation": "responsible",
+      "partnerPreference": "complementary",
+      "expectedResult": "learning"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000032",
+    "purpose": "research",
+    "answers": {
+      "researchGoal": "studentResearch",
+      "myStatus": "hasTopic",
+      "partnerStatus": "hasTopic",
+      "researchField": "business",
+      "researchExperience": "once",
+      "preferredRole": "flexible",
+      "workStyle": "creative",
+      "problemSolving": "collaborative",
+      "commitment": "verySerious",
+      "independence": "good",
+      "weeklyHours": "10to20",
+      "workFormat": "offline",
+      "projectDuration": "medium",
+      "partnerExpectation": "responsible",
+      "partnerPreference": "sameMajor",
+      "expectedResult": "publication"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000033",
+    "purpose": "research",
+    "answers": {
+      "researchGoal": "studentResearch",
+      "myStatus": "hasTopic",
+      "partnerStatus": "hasTopic",
+      "researchField": "business",
+      "researchExperience": "once",
+      "preferredRole": "flexible",
+      "workStyle": "creative",
+      "problemSolving": "collaborative",
+      "commitment": "verySerious",
+      "independence": "good",
+      "weeklyHours": "10to20",
+      "workFormat": "offline",
+      "projectDuration": "medium",
+      "partnerExpectation": "responsible",
+      "partnerPreference": "sameMajor",
+      "expectedResult": "publication"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000034",
+    "purpose": "research",
+    "answers": {
+      "researchGoal": "studentResearch",
+      "myStatus": "hasTopic",
+      "partnerStatus": "noTopic",
+      "researchField": "technology",
+      "researchExperience": "never",
+      "preferredRole": "dataAnalyst",
+      "workStyle": "detailed",
+      "problemSolving": "collaborative",
+      "commitment": "verySerious",
+      "independence": "good",
+      "weeklyHours": "5to10",
+      "workFormat": "hybrid",
+      "projectDuration": "medium",
+      "partnerExpectation": "responsible",
+      "partnerPreference": "complementary",
+      "expectedResult": "learning"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000035",
+    "purpose": "research",
+    "answers": {
+      "researchGoal": "studentResearch",
+      "myStatus": "noTopic",
+      "partnerStatus": "noTopic",
+      "researchField": "socialHumanities",
+      "researchExperience": "never",
+      "preferredRole": "writer",
+      "workStyle": "flexible",
+      "problemSolving": "proactive",
+      "commitment": "serious",
+      "independence": "good",
+      "weeklyHours": "over10",
+      "workFormat": "offline",
+      "projectDuration": "long",
+      "partnerExpectation": "proactive",
+      "partnerPreference": "sameMajor",
+      "expectedResult": "publish"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000036",
+    "purpose": "roommate",
+    "answers": {
+      "roomStatus": "hasRoom",
+      "lifestyle": "flexible",
+      "bedtime": "after-1-2am",
+      "wakeTime": "varies-late",
+      "lightSleeper": "depends",
+      "roommateExpectation": "respectPrivacy",
+      "dealbreakers": "other"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000037",
+    "purpose": "roommate",
+    "answers": {
+      "roomStatus": "hasRoom",
+      "lifestyle": "neat",
+      "bedtime": "9-10pm",
+      "wakeTime": "early-6-7am",
+      "lightSleeper": "no",
+      "roommateExpectation": "respectPrivacy",
+      "dealbreakers": "noisy"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000038",
+    "purpose": "roommate",
+    "answers": {
+      "roomStatus": "hasRoom",
+      "lifestyle": "neat",
+      "bedtime": "after-12am",
+      "wakeTime": "early-6-7am",
+      "lightSleeper": "depends",
+      "roommateExpectation": "friendly",
+      "dealbreakers": "unclearCosts"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000039",
+    "purpose": "roommate",
+    "answers": {
+      "roomStatus": "noRoom",
+      "lifestyle": "neat",
+      "bedtime": "9-10pm",
+      "wakeTime": "early-6-7am",
+      "lightSleeper": "no",
+      "roommateExpectation": "respectPrivacy",
+      "dealbreakers": "noisy"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000040",
+    "purpose": "roommate",
+    "answers": {
+      "roomStatus": "noRoom",
+      "lifestyle": "flexible",
+      "bedtime": "varies-early",
+      "wakeTime": "varies-early",
+      "lightSleeper": "yes",
+      "roommateExpectation": "friendly",
+      "dealbreakers": "unhygienic"
+    },
+    "createdAt": "2025-12-24T08:42:50.700Z"
+  },
+  {
+    "userId": "1000000001",
+    "studentId": "20020001",
+    "purpose": "love",
+    "answers": {
+      "height": "under160",
+      "selfAppearance": "attractive",
+      "appearanceImportance": "veryImportant",
+      "idealAppearance": "neat",
+      "personality": "introvert",
+      "freeTime": "stayHome",
+      "relationshipRole": "proactive",
+      "datingAtmosphere": "quiet",
+      "communicationStyle": "direct",
+      "conflictStyle": "resolveImmediately",
+      "loveValues": "honesty",
+      "relationshipType": "committed",
+      "timeCommitment": "often",
+      "meetingReadiness": "yes",
+      "gender": "male",
+      "birthYear": 2001,
+      "hometown": "Thanh Hóa",
+      "major": "Vật lý"
+    },
+    "createdAt": "2025-12-24T09:19:25.484Z"
+  },
+  {
+    "userId": "1000000001",
+    "studentId": "20020001",
+    "purpose": "study",
+    "answers": {
+      "studyGoal": "groupStudy",
+      "studyField": "socialScience",
+      "punctuality": "often",
+      "studyEfficiency": "planned",
+      "groupRole": "active",
+      "proactivity": "veryProactive",
+      "studyFormat": "online",
+      "studyFrequency": "1-2perWeek",
+      "partnerExpectation": "responsible",
+      "gender": "male",
+      "birthYear": 2001,
+      "hometown": "Thanh Hóa",
+      "major": "Vật lý"
+    },
+    "createdAt": "2025-12-24T10:52:36.588Z"
+  },
+  {
+    "userId": "1000000001",
+    "studentId": "20020001",
+    "purpose": "roommate",
+    "answers": {
+      "roomStatus": "hasRoom",
+      "lifestyle": "neat",
+      "bedtime": "9-10pm",
+      "wakeTime": "early-6-7am",
+      "lightSleeper": "yes",
+      "roommateExpectation": "respectPrivacy",
+      "dealbreakers": "unhygienic",
+      "gender": "male",
+      "birthYear": 2001,
+      "hometown": "Thanh Hóa",
+      "major": "Vật lý"
+    },
+    "createdAt": "2025-12-24T11:21:34.181Z"
+  },
+  {
+    "userId": "1766575341452",
+    "studentId": "123",
+    "purpose": "roommate",
+    "answers": {
+      "roomStatus": "noRoom",
+      "lifestyle": "neat",
+      "bedtime": "9-10pm",
+      "wakeTime": "early-6-7am",
+      "lightSleeper": "yes",
+      "roommateExpectation": "respectPrivacy",
+      "dealbreakers": "unhygienic",
+      "gender": "male",
+      "birthYear": 2004,
+      "hometown": "123",
+      "major": "123"
+    },
+    "createdAt": "2025-12-24T11:23:10.046Z"
+  }
+]

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNU Dating - Chọn mục đích</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/side-ads.css">
+    <style>
+        .ad-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            animation: popupAppear 0.3s ease;
+        }
+
+        .ad-popup.show {
+            display: block;
+        }
+
+        @keyframes popupAppear {
+            from { 
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to { 
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .ad-box {
+            position: relative;
+            width: 400px;
+            max-width: 90vw;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 4px solid #FFD700;
+        }
+
+        .ad-close-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 32px;
+            height: 32px;
+            background: #2d5016;
+            border: 2px solid #FFD700;
+            border-radius: 50%;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            font-weight: bold;
+        }
+
+        .ad-close-btn:hover {
+            background: #1a3009;
+            transform: scale(1.1);
+        }
+
+        .ad-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .ad-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+        }
+
+        .ad-overlay.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .ad-box {
+                width: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ad-box {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body class="with-side-ads">
+    <!-- Left Side Advertisement -->
+    <div class="ad-side ad-left">
+        <img src="images/ad-left.jpg" alt="Advertisement">
+        <img src="images/ad-left-2.png" alt="Advertisement">
+    </div>
+
+    <!-- Right Side Advertisement -->
+    <div class="ad-side ad-right">
+        <img src="images/ad-right.png" alt="Advertisement">
+        <img src="images/ad-right-2.png" alt="Advertisement">
+    </div>
+
+    <div class="container">
+        <div class="purpose-box">
+            <div class="header">
+                <h1>🎓 VNU Dating</h1>
+                <div class="header-actions">
+                    <a href="premium.html" class="btn btn-premium" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; padding: 10px 20px; border-radius: 8px; margin-right: 10px; display: inline-block;">⭐ Premium</a>
+                    <button onclick="window.location.href='profile.html'" class="btn btn-secondary">👤 Hồ sơ</button>
+                    <button onclick="logout()" class="btn-logout">Đăng xuất</button>
+                </div>
+            </div>
+            
+            <h2>Bạn muốn tìm gì?</h2>
+            <p class="subtitle">Chọn mục đích để bắt đầu kết nối</p>
+
+            <div class="purpose-cards">
+                <div class="purpose-card" onclick="selectPurpose('love')">
+                    <div class="icon">❤️</div>
+                    <h3>Tìm người yêu</h3>
+                    <p>Tìm kiếm mối quan hệ lãng mạn, nghiêm túc</p>
+                </div>
+
+                <div class="purpose-card" onclick="selectPurpose('friend')">
+                    <div class="icon">🤝</div>
+                    <h3>Tìm bạn</h3>
+                    <p>Kết bạn mới, mở rộng mối quan hệ xã hội</p>
+                </div>
+
+                <div class="purpose-card" onclick="selectPurpose('academic')">
+                    <div class="icon">📚</div>
+                    <h3>Tìm người học tập / nghiên cứu</h3>
+                    <p>Học nhóm, bài tập hoặc partner nghiên cứu</p>
+                </div>
+
+                <div class="purpose-card" onclick="selectPurpose('roommate')">
+                    <div class="icon">🏠</div>
+                    <h3>Tìm Roommate</h3>
+                    <p>Tìm bạn cùng phòng, chia sẻ chỗ ở</p>
+                </div>
+            </div>
+
+            <div id="message" class="message hidden"></div>
+        </div>
+    </div>
+
+    <!-- Advertisement Popup -->
+    <div id="adOverlay" class="ad-overlay" onclick="closeAdModal()"></div>
+    <div id="adPopup" class="ad-popup">
+        <div class="ad-box">
+            <button class="ad-close-btn" onclick="closeAdModal()">×</button>
+            <img src="images/ad-banner.jpg" alt="Advertisement" class="ad-image">
+        </div>
+    </div>
+
+    <script src="js/purpose.js"></script>
+</body>
+</html>

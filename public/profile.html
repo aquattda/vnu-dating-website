@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNU Dating - Hồ sơ của tôi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/side-ads.css">
+</head>
+<body class="with-side-ads">
+    <!-- Left Side Advertisement -->
+    <div class="ad-side ad-left">
+        <img src="images/ad-left.jpg" alt="Advertisement">
+        <img src="images/ad-left-2.png" alt="Advertisement">
+    </div>
+
+    <!-- Right Side Advertisement -->
+    <div class="ad-side ad-right">
+        <img src="images/ad-right.png" alt="Advertisement">
+        <img src="images/ad-right-2.png" alt="Advertisement">
+    </div>
+
+    <div class="container">
+        <div class="profile-box">
+            <div class="header">
+                <h1>👤 Hồ sơ của tôi</h1>
+                <div class="header-actions">
+                    <a href="premium.html" class="btn btn-premium" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; padding: 10px 20px; border-radius: 8px; margin-right: 10px;">⭐ Premium</a>
+                    <button onclick="window.location.href='purpose.html'" class="btn btn-secondary">Quay lại</button>
+                    <button onclick="logout()" class="btn-logout">Đăng xuất</button>
+                </div>
+            </div>
+
+            <div id="premiumStatus" class="info-section" style="display: none; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); border-radius: 10px; padding: 15px; margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h4 style="margin: 0 0 5px 0;">⭐ Premium Active</h4>
+                        <p style="margin: 0; color: #666; font-size: 0.9em;" id="premiumInfo">-</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-size: 2em; font-weight: bold; color: #667eea;" id="premiumMatches">0</div>
+                        <div style="font-size: 0.9em; color: #666;">lượt match</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loadingMessage" class="loading">
+                <p>Đang tải thông tin...</p>
+            </div>
+
+            <div id="profileContent" class="profile-content hidden">
+                <!-- User Info Section -->
+                <div class="info-section">
+                    <h3>📋 Thông tin tài khoản</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Mã sinh viên:</span>
+                            <span class="info-value" id="studentId"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orientation Section -->
+                <div class="info-section">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3>🎯 Định hướng kết nối</h3>
+                        <button onclick="editOrientation()" class="btn btn-primary">✏️ Chỉnh sửa định hướng</button>
+                    </div>
+                    <p class="info-note">Thông tin định hướng giúp hệ thống tìm kiếm người phù hợp với bạn</p>
+                    <div id="orientationContainer" class="answers-log">
+                        <div id="orientationLoading" class="loading">Đang tải...</div>
+                        <div id="orientationContent" class="hidden"></div>
+                        <div id="noOrientation" class="hidden">
+                            <p class="no-data">Chưa có thông tin định hướng</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Section -->
+                <div class="info-section">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3>🎯 Thông tin kết nối</h3>
+                        <button onclick="editProfile()" class="btn btn-primary">✏️ Chỉnh sửa</button>
+                    </div>
+                    
+                    <div class="purpose-badge" id="purposeBadge"></div>
+                    
+                    <div class="answers-log">
+                        <h4>📝 Log câu trả lời:</h4>
+                        <div id="answersLog"></div>
+                    </div>
+
+                    <div class="profile-meta">
+                        <p><strong>Ngày tạo:</strong> <span id="createdAt"></span></p>
+                        <p><strong>Cập nhật lần cuối:</strong> <span id="updatedAt"></span></p>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="info-section">
+                    <h3>📱 Thông tin liên hệ hiển thị</h3>
+                    <p class="info-note">🔒 Thông tin này chỉ được hiển thị cho người bạn đã kết nối</p>
+                    <div class="contact-display">
+                        <div id="contactInfo"></div>
+                    </div>
+                </div>
+                
+                <!-- Connections Section -->
+                <div class="info-section">
+                    <h3>🤝 Kết nối hiện tại</h3>
+                    <p class="info-note">Danh sách những người bạn đã kết nối. Khi đã kết nối, các bạn sẽ chỉ thấy nhau và không match với người khác.</p>
+                    <div id="connectionsContainer">
+                        <div id="loadingConnections" class="loading">Đang tải...</div>
+                        <div id="connectionsList" class="hidden"></div>
+                        <div id="noConnections" class="hidden">
+                            <p class="no-data">Bạn chưa có kết nối nào</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="noProfile" class="no-profile hidden">
+                <div class="icon">📝</div>
+                <h3>Bạn chưa hoàn thành câu hỏi</h3>
+                <p>Hãy chọn mục đích và hoàn thành câu hỏi để bắt đầu kết nối!</p>
+                <button onclick="window.location.href='purpose.html'" class="btn btn-primary">Bắt đầu</button>
+            </div>
+
+            <div id="message" class="message hidden"></div>
+        </div>
+    </div>
+
+    <script src="js/modal.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

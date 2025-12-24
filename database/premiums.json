@@ -1,0 +1,25 @@
+[
+  {
+    "userId": "1000000001",
+    "packageId": "package_monthly",
+    "remainingMatches": 3,
+    "createdAt": "2025-12-24T09:18:53.775Z",
+    "expiresAt": "2026-01-23T11:16:12.977Z"
+  },
+  {
+    "userId": "1000000018",
+    "packageId": "package_monthly",
+    "remainingMatches": 4,
+    "createdAt": "2025-12-24T09:30:58.539Z",
+    "expiresAt": "2026-01-23T09:30:58.539Z",
+    "lastReset": "2025-12-24T09:30:58.539Z"
+  },
+  {
+    "userId": "1766575341452",
+    "packageId": "package_monthly",
+    "remainingMatches": 2,
+    "createdAt": "2025-12-24T11:24:00.459Z",
+    "expiresAt": "2026-01-23T11:24:00.459Z",
+    "lastReset": "2025-12-24T11:24:00.459Z"
+  }
+]

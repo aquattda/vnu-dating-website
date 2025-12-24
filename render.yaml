@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: vnu-dating-app
+    env: node
+    region: singapore
+    plan: free
+    buildCommand: npm install
+    startCommand: node server-mongodb.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGODB_URI
+        sync: false

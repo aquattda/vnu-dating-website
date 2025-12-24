@@ -1,0 +1,696 @@
+[
+  {
+    "id": "1000000001",
+    "studentId": "20020001",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020001@vnu.edu.vn",
+    "phone": "0905865336",
+    "gender": "male",
+    "birthYear": 2001,
+    "hometown": "Thanh Hóa",
+    "major": "Vật lý",
+    "contact": {
+      "facebook": "facebook.com/hùng1",
+      "instagram": "@hùng_1",
+      "zalo": "0907054634"
+    },
+    "createdAt": "2025-12-07T17:00:00.000Z"
+  },
+  {
+    "id": "1000000002",
+    "studentId": "20020002",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020002@vnu.edu.vn",
+    "phone": "0909935778",
+    "gender": "female",
+    "birthYear": 2005,
+    "hometown": "Quảng Ninh",
+    "major": "Toán học",
+    "contact": {
+      "facebook": "facebook.com/thu2",
+      "instagram": "@thu_2",
+      "zalo": "0906934256"
+    },
+    "createdAt": "2025-12-17T17:00:00.000Z"
+  },
+  {
+    "id": "1000000003",
+    "studentId": "20020003",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020003@vnu.edu.vn",
+    "phone": "0902418868",
+    "gender": "female",
+    "birthYear": 2004,
+    "hometown": "Nghệ An",
+    "major": "Ngôn ngữ Anh",
+    "contact": {
+      "facebook": "facebook.com/anh3",
+      "instagram": "@anh_3",
+      "zalo": "0903412198"
+    },
+    "createdAt": "2025-12-13T17:00:00.000Z"
+  },
+  {
+    "id": "1000000004",
+    "studentId": "20020004",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020004@vnu.edu.vn",
+    "phone": "0906336221",
+    "gender": "male",
+    "birthYear": 2004,
+    "hometown": "TP. Hồ Chí Minh",
+    "major": "Luật",
+    "contact": {
+      "facebook": "facebook.com/long4",
+      "instagram": "@long_4",
+      "zalo": "0904430307"
+    },
+    "createdAt": "2025-12-07T17:00:00.000Z"
+  },
+  {
+    "id": "1000000005",
+    "studentId": "20020005",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020005@vnu.edu.vn",
+    "phone": "0908985277",
+    "gender": "female",
+    "birthYear": 2004,
+    "hometown": "Cần Thơ",
+    "major": "Luật",
+    "contact": {
+      "facebook": "facebook.com/thu5",
+      "instagram": "@thu_5",
+      "zalo": "0908903123"
+    },
+    "createdAt": "2025-12-19T17:00:00.000Z"
+  },
+  {
+    "id": "1000000006",
+    "studentId": "20020006",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020006@vnu.edu.vn",
+    "phone": "0907867299",
+    "gender": "male",
+    "birthYear": 2001,
+    "hometown": "Thanh Hóa",
+    "major": "Ngôn ngữ Anh",
+    "contact": {
+      "facebook": "facebook.com/hoàng6",
+      "instagram": "@hoàng_6",
+      "zalo": "0905799960"
+    },
+    "createdAt": "2025-12-22T17:00:00.000Z"
+  },
+  {
+    "id": "1000000007",
+    "studentId": "20020007",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020007@vnu.edu.vn",
+    "phone": "0904874837",
+    "gender": "female",
+    "birthYear": 2002,
+    "hometown": "TP. Hồ Chí Minh",
+    "major": "Kế toán",
+    "contact": {
+      "facebook": "facebook.com/nhi7",
+      "instagram": "@nhi_7",
+      "zalo": "0906975016"
+    },
+    "createdAt": "2025-12-17T17:00:00.000Z"
+  },
+  {
+    "id": "1000000008",
+    "studentId": "20020008",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020008@vnu.edu.vn",
+    "phone": "0905039534",
+    "gender": "female",
+    "birthYear": 2003,
+    "hometown": "Cần Thơ",
+    "major": "Tài chính ngân hàng",
+    "contact": {
+      "facebook": "facebook.com/vy8",
+      "instagram": "@vy_8",
+      "zalo": "0906846342"
+    },
+    "createdAt": "2025-12-13T17:00:00.000Z"
+  },
+  {
+    "id": "1000000009",
+    "studentId": "20020009",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020009@vnu.edu.vn",
+    "phone": "0909656063",
+    "gender": "female",
+    "birthYear": 2001,
+    "hometown": "Cần Thơ",
+    "major": "Tài chính ngân hàng",
+    "contact": {
+      "facebook": "facebook.com/hà9",
+      "instagram": "@hà_9",
+      "zalo": "0908180724"
+    },
+    "createdAt": "2025-12-15T17:00:00.000Z"
+  },
+  {
+    "id": "1000000010",
+    "studentId": "20020010",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020010@vnu.edu.vn",
+    "phone": "0902652936",
+    "gender": "male",
+    "birthYear": 2004,
+    "hometown": "TP. Hồ Chí Minh",
+    "major": "Sinh học",
+    "contact": {
+      "facebook": "facebook.com/tài10",
+      "instagram": "@tài_10",
+      "zalo": "0908372170"
+    },
+    "createdAt": "2025-12-08T17:00:00.000Z"
+  },
+  {
+    "id": "1000000011",
+    "studentId": "20020011",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020011@vnu.edu.vn",
+    "phone": "0903566193",
+    "gender": "female",
+    "birthYear": 2005,
+    "hometown": "Đà Nẵng",
+    "major": "Sinh học",
+    "contact": {
+      "facebook": "facebook.com/hà11",
+      "instagram": "@hà_11",
+      "zalo": "0904830012"
+    },
+    "createdAt": "2025-12-21T17:00:00.000Z"
+  },
+  {
+    "id": "1000000012",
+    "studentId": "20020012",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020012@vnu.edu.vn",
+    "phone": "0908366324",
+    "gender": "female",
+    "birthYear": 2004,
+    "hometown": "Hà Nội",
+    "major": "Ngôn ngữ Anh",
+    "contact": {
+      "facebook": "facebook.com/thảo12",
+      "instagram": "@thảo_12",
+      "zalo": "0901625444"
+    },
+    "createdAt": "2025-12-16T17:00:00.000Z"
+  },
+  {
+    "id": "1000000013",
+    "studentId": "20020013",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020013@vnu.edu.vn",
+    "phone": "0908553158",
+    "gender": "female",
+    "birthYear": 2000,
+    "hometown": "Hải Phòng",
+    "major": "Y khoa",
+    "contact": {
+      "facebook": "facebook.com/nhi13",
+      "instagram": "@nhi_13",
+      "zalo": "0903559869"
+    },
+    "createdAt": "2025-12-15T17:00:00.000Z"
+  },
+  {
+    "id": "1000000014",
+    "studentId": "20020014",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020014@vnu.edu.vn",
+    "phone": "0905468602",
+    "gender": "male",
+    "birthYear": 2000,
+    "hometown": "TP. Hồ Chí Minh",
+    "major": "Toán học",
+    "contact": {
+      "facebook": "facebook.com/nam14",
+      "instagram": "@nam_14",
+      "zalo": "0907084876"
+    },
+    "createdAt": "2025-12-22T17:00:00.000Z"
+  },
+  {
+    "id": "1000000015",
+    "studentId": "20020015",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020015@vnu.edu.vn",
+    "phone": "0901296183",
+    "gender": "female",
+    "birthYear": 2004,
+    "hometown": "Thái Bình",
+    "major": "Vật lý",
+    "contact": {
+      "facebook": "facebook.com/mai15",
+      "instagram": "@mai_15",
+      "zalo": "0902943408"
+    },
+    "createdAt": "2025-12-01T17:00:00.000Z"
+  },
+  {
+    "id": "1000000016",
+    "studentId": "20020016",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020016@vnu.edu.vn",
+    "phone": "0904105647",
+    "gender": "male",
+    "birthYear": 2002,
+    "hometown": "Hải Phòng",
+    "major": "Quản trị kinh doanh",
+    "contact": {
+      "facebook": "facebook.com/nam16",
+      "instagram": "@nam_16",
+      "zalo": "0902944514"
+    },
+    "createdAt": "2025-12-22T17:00:00.000Z"
+  },
+  {
+    "id": "1000000017",
+    "studentId": "20020017",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020017@vnu.edu.vn",
+    "phone": "0902776234",
+    "gender": "male",
+    "birthYear": 2003,
+    "hometown": "Hải Phòng",
+    "major": "Khoa học máy tính",
+    "contact": {
+      "facebook": "facebook.com/tài17",
+      "instagram": "@tài_17",
+      "zalo": "0902434054"
+    },
+    "createdAt": "2025-12-03T17:00:00.000Z"
+  },
+  {
+    "id": "1000000018",
+    "studentId": "20020018",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020018@vnu.edu.vn",
+    "phone": "0901115417",
+    "gender": "male",
+    "birthYear": 2000,
+    "hometown": "Nghệ An",
+    "major": "Công nghệ thông tin",
+    "contact": {
+      "facebook": "facebook.com/minh18",
+      "instagram": "@minh_18",
+      "zalo": "0902498293"
+    },
+    "createdAt": "2025-11-30T17:00:00.000Z"
+  },
+  {
+    "id": "1000000019",
+    "studentId": "20020019",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020019@vnu.edu.vn",
+    "phone": "0909738799",
+    "gender": "male",
+    "birthYear": 2000,
+    "hometown": "Nam Định",
+    "major": "Marketing",
+    "contact": {
+      "facebook": "facebook.com/minh19",
+      "instagram": "@minh_19",
+      "zalo": "0903330993"
+    },
+    "createdAt": "2025-12-17T17:00:00.000Z"
+  },
+  {
+    "id": "1000000020",
+    "studentId": "20020020",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020020@vnu.edu.vn",
+    "phone": "0907716836",
+    "gender": "male",
+    "birthYear": 2000,
+    "hometown": "Thái Bình",
+    "major": "Luật",
+    "contact": {
+      "facebook": "facebook.com/phúc20",
+      "instagram": "@phúc_20",
+      "zalo": "0901577323"
+    },
+    "createdAt": "2025-12-22T17:00:00.000Z"
+  },
+  {
+    "id": "1000000021",
+    "studentId": "20020021",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020021@vnu.edu.vn",
+    "phone": "0906574391",
+    "gender": "male",
+    "birthYear": 2004,
+    "hometown": "Cần Thơ",
+    "major": "Khoa học máy tính",
+    "contact": {
+      "facebook": "facebook.com/hoàng21",
+      "instagram": "@hoàng_21",
+      "zalo": "0901398683"
+    },
+    "createdAt": "2025-12-02T17:00:00.000Z"
+  },
+  {
+    "id": "1000000022",
+    "studentId": "20020022",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020022@vnu.edu.vn",
+    "phone": "0905071222",
+    "gender": "male",
+    "birthYear": 2002,
+    "hometown": "Nghệ An",
+    "major": "Thiết kế đồ họa",
+    "contact": {
+      "facebook": "facebook.com/minh22",
+      "instagram": "@minh_22",
+      "zalo": "0904604731"
+    },
+    "createdAt": "2025-12-21T17:00:00.000Z"
+  },
+  {
+    "id": "1000000023",
+    "studentId": "20020023",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020023@vnu.edu.vn",
+    "phone": "0903613255",
+    "gender": "male",
+    "birthYear": 2000,
+    "hometown": "Hà Nội",
+    "major": "Hóa học",
+    "contact": {
+      "facebook": "facebook.com/bảo23",
+      "instagram": "@bảo_23",
+      "zalo": "0901753532"
+    },
+    "createdAt": "2025-12-10T17:00:00.000Z"
+  },
+  {
+    "id": "1000000024",
+    "studentId": "20020024",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020024@vnu.edu.vn",
+    "phone": "0909682255",
+    "gender": "female",
+    "birthYear": 2001,
+    "hometown": "TP. Hồ Chí Minh",
+    "major": "Toán học",
+    "contact": {
+      "facebook": "facebook.com/mai24",
+      "instagram": "@mai_24",
+      "zalo": "0902951500"
+    },
+    "createdAt": "2025-12-12T17:00:00.000Z"
+  },
+  {
+    "id": "1000000025",
+    "studentId": "20020025",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020025@vnu.edu.vn",
+    "phone": "0903818591",
+    "gender": "female",
+    "birthYear": 2002,
+    "hometown": "Cần Thơ",
+    "major": "Luật",
+    "contact": {
+      "facebook": "facebook.com/linh25",
+      "instagram": "@linh_25",
+      "zalo": "0902639878"
+    },
+    "createdAt": "2025-12-07T17:00:00.000Z"
+  },
+  {
+    "id": "1000000026",
+    "studentId": "20020026",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020026@vnu.edu.vn",
+    "phone": "0903799234",
+    "gender": "female",
+    "birthYear": 2000,
+    "hometown": "Thanh Hóa",
+    "major": "Ngôn ngữ Anh",
+    "contact": {
+      "facebook": "facebook.com/mai26",
+      "instagram": "@mai_26",
+      "zalo": "0908314798"
+    },
+    "createdAt": "2025-12-21T17:00:00.000Z"
+  },
+  {
+    "id": "1000000027",
+    "studentId": "20020027",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020027@vnu.edu.vn",
+    "phone": "0901974622",
+    "gender": "female",
+    "birthYear": 2005,
+    "hometown": "Hải Phòng",
+    "major": "Y khoa",
+    "contact": {
+      "facebook": "facebook.com/nhi27",
+      "instagram": "@nhi_27",
+      "zalo": "0901021759"
+    },
+    "createdAt": "2025-12-08T17:00:00.000Z"
+  },
+  {
+    "id": "1000000028",
+    "studentId": "20020028",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020028@vnu.edu.vn",
+    "phone": "0905988583",
+    "gender": "female",
+    "birthYear": 2004,
+    "hometown": "Thanh Hóa",
+    "major": "Marketing",
+    "contact": {
+      "facebook": "facebook.com/mai28",
+      "instagram": "@mai_28",
+      "zalo": "0901695543"
+    },
+    "createdAt": "2025-12-18T17:00:00.000Z"
+  },
+  {
+    "id": "1000000029",
+    "studentId": "20020029",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020029@vnu.edu.vn",
+    "phone": "0907349474",
+    "gender": "female",
+    "birthYear": 2002,
+    "hometown": "Quảng Ninh",
+    "major": "Vật lý",
+    "contact": {
+      "facebook": "facebook.com/ngọc29",
+      "instagram": "@ngọc_29",
+      "zalo": "0903611708"
+    },
+    "createdAt": "2025-12-10T17:00:00.000Z"
+  },
+  {
+    "id": "1000000030",
+    "studentId": "20020030",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020030@vnu.edu.vn",
+    "phone": "0909288062",
+    "gender": "female",
+    "birthYear": 2000,
+    "hometown": "Nghệ An",
+    "major": "Hóa học",
+    "contact": {
+      "facebook": "facebook.com/my30",
+      "instagram": "@my_30",
+      "zalo": "0907654816"
+    },
+    "createdAt": "2025-12-17T17:00:00.000Z"
+  },
+  {
+    "id": "1000000031",
+    "studentId": "20020031",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020031@vnu.edu.vn",
+    "phone": "0901672866",
+    "gender": "male",
+    "birthYear": 2000,
+    "hometown": "Thái Bình",
+    "major": "Công nghệ thông tin",
+    "contact": {
+      "facebook": "facebook.com/tài31",
+      "instagram": "@tài_31",
+      "zalo": "0901670487"
+    },
+    "createdAt": "2025-12-08T17:00:00.000Z"
+  },
+  {
+    "id": "1000000032",
+    "studentId": "20020032",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020032@vnu.edu.vn",
+    "phone": "0903377334",
+    "gender": "male",
+    "birthYear": 2002,
+    "hometown": "Thanh Hóa",
+    "major": "Kế toán",
+    "contact": {
+      "facebook": "facebook.com/dũng32",
+      "instagram": "@dũng_32",
+      "zalo": "0908173625"
+    },
+    "createdAt": "2025-12-11T17:00:00.000Z"
+  },
+  {
+    "id": "1000000033",
+    "studentId": "20020033",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020033@vnu.edu.vn",
+    "phone": "0904695802",
+    "gender": "male",
+    "birthYear": 2000,
+    "hometown": "Nghệ An",
+    "major": "Hóa học",
+    "contact": {
+      "facebook": "facebook.com/tài33",
+      "instagram": "@tài_33",
+      "zalo": "0908133617"
+    },
+    "createdAt": "2025-12-02T17:00:00.000Z"
+  },
+  {
+    "id": "1000000034",
+    "studentId": "20020034",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020034@vnu.edu.vn",
+    "phone": "0905320024",
+    "gender": "male",
+    "birthYear": 2003,
+    "hometown": "Quảng Ninh",
+    "major": "Marketing",
+    "contact": {
+      "facebook": "facebook.com/dũng34",
+      "instagram": "@dũng_34",
+      "zalo": "0904849867"
+    },
+    "createdAt": "2025-12-20T17:00:00.000Z"
+  },
+  {
+    "id": "1000000035",
+    "studentId": "20020035",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020035@vnu.edu.vn",
+    "phone": "0905744958",
+    "gender": "female",
+    "birthYear": 2002,
+    "hometown": "Nam Định",
+    "major": "Hóa học",
+    "contact": {
+      "facebook": "facebook.com/vy35",
+      "instagram": "@vy_35",
+      "zalo": "0908810027"
+    },
+    "createdAt": "2025-12-22T17:00:00.000Z"
+  },
+  {
+    "id": "1000000036",
+    "studentId": "20020036",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020036@vnu.edu.vn",
+    "phone": "0907890102",
+    "gender": "male",
+    "birthYear": 2003,
+    "hometown": "TP. Hồ Chí Minh",
+    "major": "Ngôn ngữ Anh",
+    "contact": {
+      "facebook": "facebook.com/hoàng36",
+      "instagram": "@hoàng_36",
+      "zalo": "0902801819"
+    },
+    "createdAt": "2025-12-15T17:00:00.000Z"
+  },
+  {
+    "id": "1000000037",
+    "studentId": "20020037",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020037@vnu.edu.vn",
+    "phone": "0904147685",
+    "gender": "female",
+    "birthYear": 2004,
+    "hometown": "Hà Nội",
+    "major": "Sinh học",
+    "contact": {
+      "facebook": "facebook.com/linh37",
+      "instagram": "@linh_37",
+      "zalo": "0905314079"
+    },
+    "createdAt": "2025-12-09T17:00:00.000Z"
+  },
+  {
+    "id": "1000000038",
+    "studentId": "20020038",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020038@vnu.edu.vn",
+    "phone": "0904149389",
+    "gender": "male",
+    "birthYear": 2002,
+    "hometown": "Cần Thơ",
+    "major": "Luật",
+    "contact": {
+      "facebook": "facebook.com/dũng38",
+      "instagram": "@dũng_38",
+      "zalo": "0907126831"
+    },
+    "createdAt": "2025-12-11T17:00:00.000Z"
+  },
+  {
+    "id": "1000000039",
+    "studentId": "20020039",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020039@vnu.edu.vn",
+    "phone": "0909536706",
+    "gender": "male",
+    "birthYear": 2002,
+    "hometown": "Nam Định",
+    "major": "Thiết kế đồ họa",
+    "contact": {
+      "facebook": "facebook.com/nam39",
+      "instagram": "@nam_39",
+      "zalo": "0901689574"
+    },
+    "createdAt": "2025-12-06T17:00:00.000Z"
+  },
+  {
+    "id": "1000000040",
+    "studentId": "20020040",
+    "password": "$2a$10$iVIst9tAVmKBHFA0jo9Ar.SPzUUSvcSB105wT3zI59RlZrIP/jpqC",
+    "email": "20020040@vnu.edu.vn",
+    "phone": "0908944755",
+    "gender": "male",
+    "birthYear": 2002,
+    "hometown": "Cần Thơ",
+    "major": "Quản trị kinh doanh",
+    "contact": {
+      "facebook": "facebook.com/long40",
+      "instagram": "@long_40",
+      "zalo": "0905176040"
+    },
+    "createdAt": "2025-12-15T17:00:00.000Z"
+  },
+  {
+    "id": "1766575341452",
+    "studentId": "123",
+    "password": "$2a$10$tFN6/pZ1/R1W2V2SmTAUW.bRs4Xr1DdHk2refpAz/QWgbMzEYmTn.",
+    "gender": "male",
+    "birthYear": 2004,
+    "hometown": "123",
+    "major": "123",
+    "contact": {
+      "facebook": "123",
+      "instagram": "123"
+    },
+    "createdAt": "2025-12-24T11:22:21.452Z"
+  }
+]

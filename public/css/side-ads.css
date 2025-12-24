@@ -1,0 +1,102 @@
+/* Side Advertisements - Apply to all pages except premium */
+.ad-side {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 300px;
+    z-index: 100;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+    background: transparent;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(102, 126, 234, 0.2) transparent;
+}
+
+.ad-side::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ad-side::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ad-side::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.2);
+    border-radius: 2px;
+}
+
+.ad-side::-webkit-scrollbar-thumb:hover {
+    background: rgba(102, 126, 234, 0.4);
+}
+
+.ad-left {
+    left: 0;
+    gap: 20px;
+}
+
+.ad-right {
+    right: 0;
+}
+
+.ad-side img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    border: none;
+    box-shadow: none;
+    transition: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.ad-side img:hover {
+    transform: none;
+}
+
+/* Adjust body margin to prevent content overlap */
+body.with-side-ads {
+    margin: 0 320px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1600px) {
+    .ad-side {
+        width: 250px;
+    }
+    body.with-side-ads {
+        margin: 0 270px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .ad-side {
+        width: 200px;
+    }
+    body.with-side-ads {
+        margin: 0 220px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .ad-side {
+        display: none;
+    }
+    body.with-side-ads {
+        margin: 0;
+    }
+}

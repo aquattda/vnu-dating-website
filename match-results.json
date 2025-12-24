@@ -1,0 +1,221 @@
+{
+  "timestamp": "2025-12-24T09:33:39.702Z",
+  "totalMatches": 5,
+  "byPurpose": {
+    "friend": [
+      {
+        "user1": {
+          "userId": "1000000001",
+          "studentId": "20020001",
+          "gender": "male",
+          "targetGender": "female",
+          "major": "Vật lý"
+        },
+        "user2": {
+          "userId": "1000000002",
+          "studentId": "20020002",
+          "gender": "female",
+          "targetGender": "male",
+          "major": "Toán học"
+        },
+        "matchPercent": 100,
+        "profile1Answers": {
+          "friendPurpose": "activities",
+          "friendStyle": "friendly",
+          "contactFrequency": "often",
+          "friendExpectation": "sincere"
+        },
+        "profile2Answers": {
+          "friendPurpose": "activities",
+          "friendStyle": "friendly",
+          "contactFrequency": "often",
+          "friendExpectation": "sincere"
+        }
+      }
+    ],
+    "study": [
+      {
+        "user1": {
+          "userId": "1000000007",
+          "studentId": "20020007",
+          "gender": "female",
+          "targetGender": "both",
+          "major": "Kế toán"
+        },
+        "user2": {
+          "userId": "1000000010",
+          "studentId": "20020010",
+          "gender": "male",
+          "targetGender": "both",
+          "major": "Sinh học"
+        },
+        "matchPercent": 100,
+        "profile1Answers": {
+          "studyGoal": "examPrep",
+          "studyField": "naturalScience",
+          "punctuality": "often",
+          "studyEfficiency": "planned",
+          "groupRole": "active",
+          "proactivity": "proactive",
+          "studyFormat": "online",
+          "studyFrequency": "fewTimesWeek",
+          "partnerExpectation": "serious"
+        },
+        "profile2Answers": {
+          "studyGoal": "examPrep",
+          "studyField": "naturalScience",
+          "punctuality": "often",
+          "studyEfficiency": "planned",
+          "groupRole": "active",
+          "proactivity": "proactive",
+          "studyFormat": "online",
+          "studyFrequency": "fewTimesWeek",
+          "partnerExpectation": "serious"
+        }
+      }
+    ],
+    "love": [
+      {
+        "user1": {
+          "userId": "1000000018",
+          "studentId": "20020018",
+          "gender": "male",
+          "targetGender": "female",
+          "major": "Công nghệ thông tin"
+        },
+        "user2": {
+          "userId": "1000000026",
+          "studentId": "20020026",
+          "gender": "female",
+          "targetGender": "male",
+          "major": "Ngôn ngữ Anh"
+        },
+        "matchPercent": 100,
+        "profile1Answers": {
+          "height": "160-165",
+          "selfAppearance": "average",
+          "appearanceImportance": "veryImportant",
+          "idealAppearance": "natural",
+          "personality": "introvert",
+          "freeTime": "outdoor",
+          "relationshipRole": "equal",
+          "datingAtmosphere": "quiet",
+          "communicationStyle": "direct",
+          "conflictStyle": "discuss",
+          "loveValues": "empathy",
+          "relationshipType": "serious",
+          "timeCommitment": "highCommitment",
+          "meetingReadiness": "afterChat"
+        },
+        "profile2Answers": {
+          "height": "160-165",
+          "selfAppearance": "average",
+          "appearanceImportance": "veryImportant",
+          "idealAppearance": "natural",
+          "personality": "introvert",
+          "freeTime": "outdoor",
+          "relationshipRole": "equal",
+          "datingAtmosphere": "quiet",
+          "communicationStyle": "direct",
+          "conflictStyle": "discuss",
+          "loveValues": "empathy",
+          "relationshipType": "serious",
+          "timeCommitment": "highCommitment",
+          "meetingReadiness": "afterChat"
+        }
+      }
+    ],
+    "research": [
+      {
+        "user1": {
+          "userId": "1000000032",
+          "studentId": "20020032",
+          "gender": "male",
+          "targetGender": "male",
+          "major": "Kế toán"
+        },
+        "user2": {
+          "userId": "1000000033",
+          "studentId": "20020033",
+          "gender": "male",
+          "targetGender": "both",
+          "major": "Hóa học"
+        },
+        "matchPercent": 100,
+        "profile1Answers": {
+          "researchGoal": "studentResearch",
+          "myStatus": "hasTopic",
+          "partnerStatus": "hasTopic",
+          "researchField": "business",
+          "researchExperience": "once",
+          "preferredRole": "flexible",
+          "workStyle": "creative",
+          "problemSolving": "collaborative",
+          "commitment": "verySerious",
+          "independence": "good",
+          "weeklyHours": "10to20",
+          "workFormat": "offline",
+          "projectDuration": "medium",
+          "partnerExpectation": "responsible",
+          "partnerPreference": "sameMajor",
+          "expectedResult": "publication"
+        },
+        "profile2Answers": {
+          "researchGoal": "studentResearch",
+          "myStatus": "hasTopic",
+          "partnerStatus": "hasTopic",
+          "researchField": "business",
+          "researchExperience": "once",
+          "preferredRole": "flexible",
+          "workStyle": "creative",
+          "problemSolving": "collaborative",
+          "commitment": "verySerious",
+          "independence": "good",
+          "weeklyHours": "10to20",
+          "workFormat": "offline",
+          "projectDuration": "medium",
+          "partnerExpectation": "responsible",
+          "partnerPreference": "sameMajor",
+          "expectedResult": "publication"
+        }
+      }
+    ],
+    "roommate": [
+      {
+        "user1": {
+          "userId": "1000000037",
+          "studentId": "20020037",
+          "gender": "female",
+          "targetGender": "male",
+          "major": "Sinh học"
+        },
+        "user2": {
+          "userId": "1000000039",
+          "studentId": "20020039",
+          "gender": "male",
+          "targetGender": "both",
+          "major": "Thiết kế đồ họa"
+        },
+        "matchPercent": 86,
+        "profile1Answers": {
+          "roomStatus": "hasRoom",
+          "lifestyle": "neat",
+          "bedtime": "9-10pm",
+          "wakeTime": "early-6-7am",
+          "lightSleeper": "no",
+          "roommateExpectation": "respectPrivacy",
+          "dealbreakers": "noisy"
+        },
+        "profile2Answers": {
+          "roomStatus": "noRoom",
+          "lifestyle": "neat",
+          "bedtime": "9-10pm",
+          "wakeTime": "early-6-7am",
+          "lightSleeper": "no",
+          "roommateExpectation": "respectPrivacy",
+          "dealbreakers": "noisy"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNU Dating - Premium</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .premium-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .premium-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .premium-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .premium-header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 1200px) {
+            .packages-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .package-card.featured {
+            border: 3px solid #667eea;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .package-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .package-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .package-price {
+            font-size: 2em;
+            color: #667eea;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .package-price small {
+            font-size: 0.5em;
+            color: #666;
+        }
+
+        .package-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+        }
+
+        .package-features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .package-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+
+        .package-features li:before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .btn-buy {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .btn-buy:hover {
+            opacity: 0.9;
+        }
+
+        .btn-buy:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .discount-badge {
+            background: #ff4757;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+
+        .current-status {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .current-status h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .matches-count {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .close-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            color: #667eea;
+            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .close-button:hover {
+            background: #667eea;
+            color: white;
+            transform: rotate(90deg);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="premium-container">
+        <button class="close-button" onclick="window.history.back()" title="Đóng">×</button>
+        <a href="profile.html" class="back-link">← Quay lại Profile</a>
+
+        <div class="premium-header">
+            <h1>⭐ Premium Packages</h1>
+            <p>Nâng cấp tài khoản để có thêm lượt match mỗi ngày!</p>
+        </div>
+
+       
+
+        <div class="packages-grid" id="packagesGrid">
+            <!-- Packages will be loaded here -->
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000/api';
+
+        function checkAuth() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        async function loadPremiumStatus() {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await fetch(`${API_URL}/premium/status`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    if (data.isPremium && data.remainingMatches > 0) {
+                        document.getElementById('currentStatus').style.display = 'block';
+                        document.getElementById('matchesCount').textContent = data.remainingMatches;
+                        
+                        let info = '';
+                        if (data.isMonthly) {
+                            const expiresAt = new Date(data.expiresAt);
+                            info = `Gói Premium Monthly - Hết hạn: ${expiresAt.toLocaleDateString('vi-VN')}`;
+                        } else {
+                            info = 'Lượt match một lần';
+                        }
+                        document.getElementById('packageInfo').textContent = info;
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading premium status:', error);
+            }
+        }
+
+        async function loadPackages() {
+            try {
+                const response = await fetch(`${API_URL}/premium/packages`);
+                const data = await response.json();
+                
+                const grid = document.getElementById('packagesGrid');
+                grid.innerHTML = '';
+                
+                data.packages.forEach(pkg => {
+                    const card = document.createElement('div');
+                    card.className = `package-card ${pkg.badge ? 'featured' : ''}`;
+                    
+                    let badgeHtml = pkg.badge ? `<div class="package-badge">${pkg.badge}</div>` : '';
+                    let discountHtml = pkg.discount ? `<span class="discount-badge">-${pkg.discount}</span>` : '';
+                    
+                    card.innerHTML = `
+                        ${badgeHtml}
+                        <div class="package-name">${pkg.name}</div>
+                        <div class="package-price">
+                            ${(pkg.price / 1000).toFixed(0)}K ${discountHtml}
+                            ${pkg.duration ? '<small>/tháng</small>' : ''}
+                        </div>
+                        <div class="package-description">${pkg.description}</div>
+                        <ul class="package-features">
+                            <li>${pkg.matches} lượt match ${pkg.duration ? 'mỗi ngày' : ''}</li>
+                            ${pkg.duration ? '<li>Ưu tiên tốc độ matching</li>' : ''}
+                            ${pkg.duration ? '<li>Hỗ trợ ưu tiên 24/7</li>' : ''}
+                            ${pkg.duration ? `<li>Có hiệu lực ${pkg.duration} ngày</li>` : '<li>Sử dụng trong ngày</li>'}
+                        </ul>
+                        <button class="btn-buy" onclick="buyPackage('${pkg.id}', ${pkg.price})">
+                            Mua ngay
+                        </button>
+                    `;
+                    
+                    grid.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error loading packages:', error);
+            }
+        }
+
+        async function buyPackage(packageId, amount) {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await fetch(`${API_URL}/premium/create-payment`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ packageId })
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Redirect to MoMo payment page
+                    window.location.href = data.paymentUrl;
+                } else {
+                    alert('Có lỗi xảy ra: ' + (data.error || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Error creating payment:', error);
+                alert('Có lỗi xảy ra khi tạo thanh toán');
+            }
+        }
+
+        // Initialize
+        checkAuth();
+        loadPremiumStatus();
+        loadPackages();
+    </script>
+</body>
+</html>

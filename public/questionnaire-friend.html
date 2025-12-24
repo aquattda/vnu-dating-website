@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNU Dating - Câu hỏi tìm bạn</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/side-ads.css">
+</head>
+<body class="with-side-ads">
+    <!-- Left Side Advertisement -->
+    <div class="ad-side ad-left">
+        <img src="images/ad-left.jpg" alt="Advertisement">
+        <img src="images/ad-left-2.png" alt="Advertisement">
+    </div>
+
+    <!-- Right Side Advertisement -->
+    <div class="ad-side ad-right">
+        <img src="images/ad-right.png" alt="Advertisement">
+        <img src="images/ad-right-2.png" alt="Advertisement">
+    </div>
+
+    <div class="container">
+        <div class="questionnaire-box">
+            <div class="header">
+                <h1>🤝 Tìm bạn</h1>
+                <div class="header-actions">
+                    <a href="profile.html" class="btn-profile">👤 Hồ sơ</a>
+                    <button onclick="logout()" class="btn-logout">Đăng xuất</button>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <p class="progress-text">Câu <span id="currentQ">1</span> / 4</p>
+
+            <form id="friendForm" onsubmit="handleSubmit(event)">
+                <div class="question-section active" data-section="1">
+                    <h3>20. Bạn tìm bạn để:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="friendPurpose" value="chat" required>
+                            <span>💬 Trò chuyện, chia sẻ</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="friendPurpose" value="activities">
+                            <span>🎉 Cùng tham gia hoạt động (đi ăn, đi chơi, dạo phố,…)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="friendPurpose" value="support">
+                            <span>🤝 Hỗ trợ tinh thần</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="friendPurpose" value="other">
+                            <span>✨ Khác</span>
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                </div>
+
+                <div class="question-section" data-section="2">
+                    <h3>21. Phong cách bạn bè bạn thích:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="friendStyle" value="friendly" required>
+                            <span>😊 Hoà đồng</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="friendStyle" value="calm">
+                            <span>😌 Điềm đạm</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="friendStyle" value="quiet">
+                            <span>🤫 Không quá ồn ào</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="3">
+                    <h3>22. Tần suất bạn muốn liên lạc:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="contactFrequency" value="often" required>
+                            <span>📞 Thường xuyên</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="contactFrequency" value="whenNeeded">
+                            <span>📱 Khi cần</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="contactFrequency" value="casual">
+                            <span>🎲 Tuỳ hứng</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="4">
+                    <h3>23. Điều bạn mong muốn ở một người bạn:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="friendExpectation" value="listening" required>
+                            <span>👂 Biết lắng nghe</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="friendExpectation" value="respectPrivacy">
+                            <span>🔒 Tôn trọng riêng tư</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="friendExpectation" value="sincere">
+                            <span>💖 Chân thành</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="friendExpectation" value="other">
+                            <span>✨ Khác</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="submit" class="btn btn-primary">🎉 Hoàn thành</button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="message" class="message hidden"></div>
+        </div>
+    </div>
+
+    <script src="js/questionnaire.js"></script>
+</body>
+</html>

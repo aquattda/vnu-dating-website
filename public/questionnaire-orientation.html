@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNU Dating - Định hướng kết nối</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/side-ads.css">
+</head>
+<body class="with-side-ads">
+    <!-- Left Side Advertisement -->
+    <div class="ad-side ad-left">
+        <img src="images/ad-left.jpg" alt="Advertisement">
+        <img src="images/ad-left-2.png" alt="Advertisement">
+    </div>
+
+    <!-- Right Side Advertisement -->
+    <div class="ad-side ad-right">
+        <img src="images/ad-right.png" alt="Advertisement">
+        <img src="images/ad-right-2.png" alt="Advertisement">
+    </div>
+
+    <div class="container">
+        <div class="questionnaire-box">
+            <div class="header">
+                <h1>🎯 Định hướng kết nối</h1>
+                <div class="header-actions">
+                    <button onclick="logout()" class="btn-logout">Đăng xuất</button>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <p class="progress-text">Câu <span id="currentQ">1</span> / 9</p>
+
+            <form id="orientationForm" onsubmit="handleSubmit(event)">
+                <div class="question-section active" data-section="1">
+                    <h3>1. Giới tính của bạn:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="myGender" value="male" required>
+                            <span>👨 Nam</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="myGender" value="female">
+                            <span>👩 Nữ</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="myGender" value="other">
+                            <span>🌈 Khác</span>
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                </div>
+
+                <div class="question-section" data-section="2">
+                    <h3>2. Bạn muốn kết nối với ai: <span style="color: red;">(Câu quan trọng)</span></h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="targetGender" value="male" required>
+                            <span>👨 Nam</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="targetGender" value="female">
+                            <span>👩 Nữ</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="targetGender" value="both">
+                            <span>🤝 Nam hoặc nữ</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="3">
+                    <h3>3. Mục tiêu mối quan hệ của bạn là:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="relationshipGoal" value="long-term" required>
+                            <span>💍 Lâu dài, nghiêm túc</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="relationshipGoal" value="slow-serious">
+                            <span>🌱 Tìm hiểu nghiêm túc nhưng chậm rãi</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="relationshipGoal" value="undefined">
+                            <span>❓ Chưa xác định rõ, cần thời gian</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="4">
+                    <h3>4. Bạn sẵn sàng cho mối quan hệ mới ở mức độ nào?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="readiness" value="very-ready" required>
+                            <span>✅ Rất sẵn sàng</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="readiness" value="quite-ready">
+                            <span>👍 Khá sẵn sàng</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="readiness" value="need-time">
+                            <span>⏳ Cần thêm thời gian</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="5">
+                    <h3>5. Khi có thời gian rảnh, bạn thường:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="freeTime" value="stay-home" required>
+                            <span>🏠 Ở nhà một mình</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="freeTime" value="go-out">
+                            <span>🚶 Ra ngoài gặp gỡ</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="freeTime" value="depends">
+                            <span>🤔 Tuỳ thời điểm</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="6">
+                    <h3>6. Trong một cuộc trò chuyện, bạn thường:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="conversationStyle" value="talk-much" required>
+                            <span>💬 Chủ động nói nhiều</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="conversationStyle" value="listen">
+                            <span>👂 Lắng nghe là chính</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="conversationStyle" value="talk-when-needed">
+                            <span>🤐 Chỉ nói khi cần</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="7">
+                    <h3>7. Bạn cảm thấy thoải mái nhất khi:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="comfortZone" value="alone" required>
+                            <span>🧘 Làm việc/hoạt động một mình</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="comfortZone" value="with-others">
+                            <span>👥 Làm việc/hoạt động cùng người khác</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="comfortZone" value="flexible">
+                            <span>⚖️ Lúc này lúc kia</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="8">
+                    <h3>8. Phong cách sống của bạn nghiêng về:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="lifestyle" value="fun" required>
+                            <span>😄 Vui vẻ, thoải mái</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="lifestyle" value="serious">
+                            <span>📋 Nghiêm túc, có kế hoạch</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="lifestyle" value="balanced">
+                            <span>⚖️ Linh hoạt giữa hai kiểu</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <div class="question-section" data-section="9">
+                    <h3>9. Khi gặp áp lực, bạn thường:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="stressResponse" value="share" required>
+                            <span>🤗 Muốn có người chia sẻ</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="stressResponse" value="self-solve">
+                            <span>💪 Tự giải quyết</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="stressResponse" value="avoid">
+                            <span>🚫 Tránh tiếp xúc</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="submit" class="btn btn-submit">✅ Hoàn thành</button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="message" class="message hidden"></div>
+        </div>
+    </div>
+
+    <script src="js/orientation.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "vnu-dating-website",
+  "version": "1.0.0",
+  "description": "Dating website for VNU students",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server-mongodb.js",
+    "dev": "nodemon server-mongodb.js",
+    "migrate": "node migrate-to-mongodb.js",
+    "old-server": "node server.js"
+  },
+  "keywords": [
+    "dating",
+    "vnu",
+    "students"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.20.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNU Dating - Chọn loại hình học tập</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/side-ads.css">
+</head>
+<body class="with-side-ads">
+    <!-- Left Side Advertisement -->
+    <div class="ad-side ad-left">
+        <img src="images/ad-left.jpg" alt="Advertisement">
+        <img src="images/ad-left-2.png" alt="Advertisement">
+    </div>
+
+    <!-- Right Side Advertisement -->
+    <div class="ad-side ad-right">
+        <img src="images/ad-right.png" alt="Advertisement">
+        <img src="images/ad-right-2.png" alt="Advertisement">
+    </div>
+
+    <div class="container">
+        <div class="purpose-box">
+            <div class="header">
+                <h1>📚 Học tập & Nghiên cứu</h1>
+                <div class="header-actions">
+                    <button onclick="window.location.href='purpose.html'" class="btn btn-secondary">← Quay lại</button>
+                    <button onclick="logout()" class="btn-logout">Đăng xuất</button>
+                </div>
+            </div>
+            
+            <h2>Bạn muốn tìm gì?</h2>
+            <p class="subtitle">Chọn loại hình phù hợp với nhu cầu của bạn</p>
+
+            <div class="purpose-cards" style="justify-content: center; gap: 30px;">
+                <div class="purpose-card" onclick="selectAcademicType('study')" style="width: 280px;">
+                    <div class="icon" style="font-size: 4em;">📖</div>
+                    <h3>Tìm người học tập</h3>
+                </div>
+
+                <div class="purpose-card" onclick="selectAcademicType('research')" style="width: 280px;">
+                    <div class="icon" style="font-size: 4em;">🔬</div>
+                    <h3>Tìm người nghiên cứu</h3>
+                </div>
+            </div>
+
+            <div id="message" class="message hidden"></div>
+        </div>
+    </div>
+
+    <script>
+        function checkAuth() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'index.html';
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('studentId');
+            window.location.href = 'index.html';
+        }
+
+        async function selectAcademicType(type) {
+            // Lưu purpose là study hoặc research
+            localStorage.setItem('purpose', type);
+            
+            try {
+                // Kiểm tra xem user đã có profile với purpose này chưa
+                const token = localStorage.getItem('token');
+                const response = await fetch(`/api/profile/check/${type}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (data.hasProfile) {
+                    // Đã có profile rồi → đi thẳng đến trang matches
+                    window.location.href = `matches.html?purpose=${type}`;
+                } else {
+                    // Chưa có profile → đi đến questionnaire
+                    if (type === 'study') {
+                        window.location.href = 'questionnaire-study.html';
+                    } else if (type === 'research') {
+                        window.location.href = 'questionnaire-research.html';
+                    }
+                }
+            } catch (error) {
+                console.error('Lỗi khi kiểm tra profile:', error);
+                // Nếu có lỗi, vẫn cho đi đến questionnaire
+                if (type === 'study') {
+                    window.location.href = 'questionnaire-study.html';
+                } else if (type === 'research') {
+                    window.location.href = 'questionnaire-research.html';
+                }
+            }
+        }
+
+        // Kiểm tra auth khi load trang
+        window.addEventListener('DOMContentLoaded', checkAuth);
+    </script>
+</body>
+</html>

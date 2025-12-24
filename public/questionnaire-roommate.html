@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VNU Dating - Câu hỏi tìm Roommate</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/side-ads.css">
+</head>
+<body class="with-side-ads">
+    <!-- Left Side Advertisement -->
+    <div class="ad-side ad-left">
+        <img src="images/ad-left.jpg" alt="Advertisement">
+        <img src="images/ad-left-2.png" alt="Advertisement">
+    </div>
+
+    <!-- Right Side Advertisement -->
+    <div class="ad-side ad-right">
+        <img src="images/ad-right.png" alt="Advertisement">
+        <img src="images/ad-right-2.png" alt="Advertisement">
+    </div>
+
+    <div class="container">
+        <div class="questionnaire-box">
+            <div class="header">
+                <h1>🏠 Tìm Roommate</h1>
+                <div class="header-actions">
+                    <a href="profile.html" class="btn-profile">👤 Hồ sơ</a>
+                    <button onclick="logout()" class="btn-logout">Đăng xuất</button>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+            <p class="progress-text">Câu <span id="currentQ">1</span> / 7</p>
+
+            <form id="roommateForm" onsubmit="handleSubmit(event)">
+                <!-- Question 1: Room Status (CRITICAL FOR MATCHING) -->
+                <div class="question-section active" data-section="1">
+                    <h3>1. Bạn thuộc đối tượng nào? <span style="color: red;">(Câu quan trọng - Bắt buộc)</span></h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="roomStatus" value="hasRoom" required>
+                            <span>🏠 Đã có phòng</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="roomStatus" value="noRoom">
+                            <span>🔍 Chưa có phòng</span>
+                        </label>
+                    </div>
+                    <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                </div>
+
+                <!-- Question 2: Lifestyle Habits -->
+                <div class="question-section" data-section="2">
+                    <h3>2. Thói quen sinh hoạt của bạn:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="lifestyle" value="neat" required>
+                            <span>✨ Gọn gàng, ngăn nắp</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="lifestyle" value="flexible">
+                            <span>🤷 Thoải mái, như nào cũng được</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <!-- Question 3: Bedtime -->
+                <div class="question-section" data-section="3">
+                    <h3>3. Bạn thường ngủ lúc mấy giờ?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="bedtime" value="9-10pm" required>
+                            <span>🌙 9-10 giờ</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="bedtime" value="after-12am">
+                            <span>🌃 Sau 12 giờ</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="bedtime" value="after-1-2am">
+                            <span>🌌 Sau 1-2 giờ sáng</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="bedtime" value="varies-early">
+                            <span>⏰ Lúc này lúc kia nhưng thường là sớm</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="bedtime" value="varies-late">
+                            <span>⏰ Lúc này lúc kia nhưng thường là muộn</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <!-- Question 4: Wake Time -->
+                <div class="question-section" data-section="4">
+                    <h3>4. Bạn thường dậy lúc mấy giờ?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="wakeTime" value="early-6-7am" required>
+                            <span>🌅 Sớm (6-7 giờ)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="wakeTime" value="after-9am">
+                            <span>☀️ Sau 9 giờ</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="wakeTime" value="noon">
+                            <span>🕛 Trưa</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="wakeTime" value="varies-early">
+                            <span>⏰ Lúc này lúc kia nhưng thường là sớm</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="wakeTime" value="varies-late">
+                            <span>⏰ Lúc này lúc kia nhưng thường là muộn</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <!-- Question 5: Light Sleeper -->
+                <div class="question-section" data-section="5">
+                    <h3>5. Bạn có phải là người khó ngủ không?</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="lightSleeper" value="yes" required>
+                            <span>😴 Có</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="lightSleeper" value="no">
+                            <span>😌 Không</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="lightSleeper" value="depends">
+                            <span>🤔 Tuỳ lúc</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <!-- Question 6: Roommate Expectation -->
+                <div class="question-section" data-section="6">
+                    <h3>6. Bạn mong muốn roommate:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="roommateExpectation" value="respectPrivacy" required>
+                            <span>🤫 Tôn trọng không gian riêng</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="roommateExpectation" value="friendly">
+                            <span>😊 Hoà đồng, dễ trao đổi</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="button" class="btn btn-next" onclick="nextQuestion()">Tiếp theo →</button>
+                    </div>
+                </div>
+
+                <!-- Question 7: Dealbreakers -->
+                <div class="question-section" data-section="7">
+                    <h3>7. Điều bạn không chấp nhận khi ở chung:</h3>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="dealbreakers" value="unhygienic" required>
+                            <span>🚫 Thiếu vệ sinh</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="dealbreakers" value="noisy">
+                            <span>🔇 Ồn ào</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="dealbreakers" value="unclearCosts">
+                            <span>💸 Không rõ ràng chi phí</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="dealbreakers" value="other">
+                            <span>📝 Khác</span>
+                        </label>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-back" onclick="prevQuestion()">← Quay lại</button>
+                        <button type="submit" class="btn btn-submit">✅ Hoàn thành</button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="message" class="message hidden"></div>
+        </div>
+    </div>
+
+    <script src="js/questionnaire.js"></script>
+</body>
+</html>
