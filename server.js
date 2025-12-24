@@ -791,7 +791,7 @@ app.post('/api/premium/create-payment', authenticateToken, async (req, res) => {
         await transaction.save();
         
         // Generate fake MoMo payment URL
-        const paymentUrl = `http://localhost:3000/momo-payment.html?orderId=${orderId}&amount=${pkg.price}`;
+        const paymentUrl = `/momo-payment.html?orderId=${orderId}&amount=${pkg.price}`;
         
         res.json({
             success: true,
