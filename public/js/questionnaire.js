@@ -203,44 +203,49 @@ window.addEventListener('DOMContentLoaded', () => {
     loadExistingAnswers();
 });
 
-// Load câu trả lời cũ nếu đang ở chế độ chỉnh sửa
+// Load câu trả lời cũ nếu đã có profile cho purpose này
 async function loadExistingAnswers() {
-    const editMode = localStorage.getItem('editMode');
-    if (editMode === 'true') {
-        const token = localStorage.getItem('token');
-        
-        try {
-            const response = await fetch(`${API_URL}/profile`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
+    const purpose = localStorage.getItem('purpose');
+    const token = localStorage.getItem('token');
+    
+    if (!purpose || !token) return;
+    
+    try {
+        const response = await fetch(`${API_URL}/profile/${purpose}`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            // Chưa có profile, không cần load
+            return;
+        }
+
+        const data = await response.json();
+
+        if (data.success && data.profile && data.profile.answers) {
+            const answers = data.profile.answers;
+            
+            console.log('Loading existing answers for purpose:', purpose, answers);
+            
+            // Điền dữ liệu vào form
+            Object.entries(answers).forEach(([name, value]) => {
+                const input = document.querySelector(`input[name="${name}"]`);
+                if (input) {
+                    if (input.type === 'radio') {
+                        const radio = document.querySelector(`input[name="${name}"][value="${value}"]`);
+                        if (radio) radio.checked = true;
+                    } else {
+                        input.value = value;
+                    }
                 }
             });
 
-            const data = await response.json();
-
-            if (data.profile && data.profile.answers) {
-                const answers = data.profile.answers;
-                
-                // Điền dữ liệu vào form
-                Object.entries(answers).forEach(([name, value]) => {
-                    const input = document.querySelector(`input[name="${name}"]`);
-                    if (input) {
-                        if (input.type === 'radio') {
-                            const radio = document.querySelector(`input[name="${name}"][value="${value}"]`);
-                            if (radio) radio.checked = true;
-                        } else {
-                            input.value = value;
-                        }
-                    }
-                });
-
-                showMessage('Đang chỉnh sửa câu trả lời của bạn', false);
-            }
-        } catch (error) {
-            console.error('Lỗi load dữ liệu:', error);
+            showMessage('Đã load câu trả lời trước đó. Bạn có thể chỉnh sửa và lưu lại.', false);
         }
-
-        // Xóa edit mode flag
-        localStorage.removeItem('editMode');
+    } catch (error) {
+        console.error('Lỗi load dữ liệu:', error);
+        // Không hiển thị lỗi cho user, vì có thể đây là lần đầu điền
     }
 }

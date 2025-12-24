@@ -296,6 +296,50 @@ app.post('/api/questionnaire', authenticateToken, async (req, res) => {
     }
 });
 
+// Check if user has profile for a specific purpose
+app.get('/api/profile/check/:purpose', authenticateToken, async (req, res) => {
+    try {
+        const { purpose } = req.params;
+        
+        const profile = await Profile.findOne({ 
+            userId: req.user.id, 
+            purpose 
+        });
+        
+        res.json({ 
+            hasProfile: !!profile,
+            profile: profile ? profile.toObject() : null
+        });
+    } catch (error) {
+        console.error('Profile check error:', error);
+        res.status(500).json({ error: 'Lỗi server' });
+    }
+});
+
+// Get profile for a specific purpose
+app.get('/api/profile/:purpose', authenticateToken, async (req, res) => {
+    try {
+        const { purpose } = req.params;
+        
+        const profile = await Profile.findOne({ 
+            userId: req.user.id, 
+            purpose 
+        });
+        
+        if (!profile) {
+            return res.status(404).json({ error: 'Không tìm thấy profile' });
+        }
+        
+        res.json({ 
+            success: true,
+            profile: profile.toObject()
+        });
+    } catch (error) {
+        console.error('Get profile error:', error);
+        res.status(500).json({ error: 'Lỗi server' });
+    }
+});
+
 // Submit profile (POST)
 app.post('/api/profile', authenticateToken, async (req, res) => {
     try {

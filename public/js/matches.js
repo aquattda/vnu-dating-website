@@ -18,6 +18,33 @@ function goToPurpose() {
     window.location.href = 'purpose.html';
 }
 
+function editAnswers() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const purpose = urlParams.get('purpose') || localStorage.getItem('purpose');
+    
+    if (!purpose) {
+        alert('Không xác định được mục đích. Vui lòng chọn lại mục đích.');
+        window.location.href = 'purpose.html';
+        return;
+    }
+    
+    // Điều hướng đến trang questionnaire tương ứng với purpose
+    // Trang questionnaire sẽ tự động load câu trả lời cũ
+    if (purpose === 'love') {
+        window.location.href = 'questionnaire-love.html';
+    } else if (purpose === 'friend') {
+        window.location.href = 'questionnaire-friend.html';
+    } else if (purpose === 'study') {
+        window.location.href = 'questionnaire-study.html';
+    } else if (purpose === 'research') {
+        window.location.href = 'questionnaire-research.html';
+    } else if (purpose === 'roommate') {
+        window.location.href = 'questionnaire-roommate.html';
+    } else {
+        window.location.href = 'purpose.html';
+    }
+}
+
 async function loadMatches() {
     const token = localStorage.getItem('token');
     const loadingEl = document.getElementById('loadingMessage');
