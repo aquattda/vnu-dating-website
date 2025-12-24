@@ -578,14 +578,17 @@ async function loadPremiumStatus() {
 
         if (response.ok) {
             const data = await response.json();
+            console.log('Premium status:', data); // Debug log
             
-            if (data.isPremium && data.remainingMatches > 0) {
+            if (data.hasPremium && data.remainingMatches > 0) {
                 document.getElementById('premiumStatus').style.display = 'block';
                 document.getElementById('premiumMatches').textContent = data.remainingMatches;
                 
                 let info = '';
-                if (data.isMonthly) {
-                    const expiresAt = new Date(data.expiresAt);
+                // Check if any premium has expiresAt (monthly)
+                const monthlyPremium = data.premiums?.find(p => p.expiresAt);
+                if (monthlyPremium) {
+                    const expiresAt = new Date(monthlyPremium.expiresAt);
                     info = `Premium Monthly - Hết hạn: ${expiresAt.toLocaleDateString('vi-VN')}`;
                 } else {
                     info = 'Lượt match một lần';
