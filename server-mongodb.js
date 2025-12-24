@@ -572,6 +572,10 @@ app.post('/api/connection', authenticateToken, async (req, res) => {
                 matchedUserId,
                 name: matchedUser ? matchedUser.name : 'Unknown',
                 email: matchedUser ? matchedUser.email : null
+            },
+            partnerContact: {
+                email: matchedUser ? matchedUser.email : null,
+                name: matchedUser ? matchedUser.name : 'Unknown'
             }
         });
     } catch (error) {

@@ -319,6 +319,12 @@ async function checkConnectionStatus() {
 }
 
 function showContactInfo(userId, contact) {
+    // Nếu không có contact info, không hiển thị
+    if (!contact) {
+        console.warn('No contact info available');
+        return;
+    }
+
     // Tìm match card của user này
     const matchCards = document.querySelectorAll('.match-card');
     
@@ -336,6 +342,24 @@ function showContactInfo(userId, contact) {
                     <div class="contact-grid" style="display: flex; flex-direction: column; gap: 12px;">
             `;
             
+            // Hiển thị email (luôn có)
+            if (contact.email) {
+                contactHtml += `
+                    <div class="contact-item" style="display: flex; align-items: center; gap: 12px; padding: 12px; background: white; border-radius: 8px;">
+                        <span style="font-size: 24px;">📧</span>
+                        <div>
+                            <div style="font-size: 0.85em; color: var(--gray); margin-bottom: 4px;">Email:</div>
+                            <a href="mailto:${contact.email}" 
+                               style="color: var(--primary); text-decoration: none; font-weight: 500;" 
+                               target="_blank">
+                                ${contact.email}
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Hiển thị Facebook nếu có
             if (contact.facebook) {
                 contactHtml += `
                     <div class="contact-item" style="display: flex; align-items: center; gap: 12px; padding: 12px; background: white; border-radius: 8px;">
