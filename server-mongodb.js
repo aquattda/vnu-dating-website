@@ -788,7 +788,7 @@ app.get('/api/premium/packages', (req, res) => {
             id: 1,
             name: '1 Lượt Match',
             matches: 1,
-            price: 15000,
+            price: 5000,
             description: 'Phù hợp để thử nghiệm',
             type: 'one-time'
         },
@@ -796,23 +796,23 @@ app.get('/api/premium/packages', (req, res) => {
             id: 2,
             name: '3 Lượt Match',
             matches: 3,
-            price: 39000,
-            description: 'Tiết kiệm 13%',
+            price: 12000,
+            description: 'Tiết kiệm 20%',
             type: 'one-time'
         },
         {
             id: 3,
             name: '5 Lượt Match',
             matches: 5,
-            price: 59000,
-            description: 'Tiết kiệm 21%',
+            price: 20000,
+            description: 'Tiết kiệm 20%',
             type: 'one-time'
         },
         {
             id: 4,
             name: 'Monthly Premium',
             matches: 30,
-            price: 99000,
+            price: 149000,
             description: 'Không giới hạn trong 30 ngày',
             type: 'monthly'
         }
