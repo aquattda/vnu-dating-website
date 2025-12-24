@@ -452,11 +452,12 @@ app.get('/api/matches', authenticateToken, async (req, res) => {
                 // Get user info
                 const matchedUser = await User.findOne({ studentId: profile.userId });
                 
-                // Check if already connected
+                // Check if already connected (bidirectional check)
                 const existingConnection = await Connection.findOne({
-                    userId: req.user.id,
-                    matchedUserId: profile.userId,
-                    purpose
+                    $or: [
+                        { userId: req.user.id, matchedUserId: profile.userId, purpose },
+                        { userId: profile.userId, matchedUserId: req.user.id, purpose }
+                    ]
                 });
                 
                 matches.push({
@@ -644,15 +645,25 @@ app.get('/api/connection-status', authenticateToken, async (req, res) => {
 // Get user connections (my-connections)
 app.get('/api/my-connections', authenticateToken, async (req, res) => {
     try {
-        const connections = await Connection.find({ userId: req.user.id });
+        // FIX: Query both directions - where user is userId OR matchedUserId
+        const connections = await Connection.find({
+            $or: [
+                { userId: req.user.id },
+                { matchedUserId: req.user.id }
+            ]
+        });
+
+        console.log(`📊 Found ${connections.length} connections for user ${req.user.id}`);
 
         // Get user details for each connection
         const connectionsWithDetails = await Promise.all(
             connections.map(async (conn) => {
-                const user = await User.findOne({ studentId: conn.matchedUserId });
+                // Determine who is the "other" person
+                const otherUserId = conn.userId === req.user.id ? conn.matchedUserId : conn.userId;
+                const user = await User.findOne({ studentId: otherUserId });
                 return {
                     id: conn._id,
-                    matchedUserId: conn.matchedUserId,
+                    matchedUserId: otherUserId,
                     name: user ? user.name : 'Unknown',
                     faculty: user ? user.faculty : 'Unknown',
                     year: user ? user.year : 0,
